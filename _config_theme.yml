@@ -105,7 +105,7 @@ menu:
     icon: fa-rss
 
 widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts, recent_comments and links.
-  - search
+  #- search
   - category
   - recent_posts
   - links
