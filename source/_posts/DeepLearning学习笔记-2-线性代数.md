@@ -42,20 +42,89 @@ A_{2,1} & A_{2,2}
 
 &emsp;&emsp;矩阵逐元素操作：将函数$f$应用到**A**的所有元素上，用$f(A)_{i,j}$表示。
 
-{% codeblock Javascript Array Syntax lang:js http://j.mp/pPUUmW MDN Documentation %}
-var arr1 = new Array(arrayLength);
-var arr2 = new Array(element0, element1, ..., elementN);
-{% endcodeblock %}
-
 #### 张量（tensor）
 
 &emsp;&emsp;**超过二维的数组**，表示同矩阵，如：**A**表示三维张量，$A_{i,j,k}$表示其元素。
 
+#### 转置（transpose）
 
+&emsp;&emsp;矩阵转置相当于**沿着对角线翻转**，定义如下：$A_{i,j}^{\top } = A_{j,i}$。
+* <font color="#ff0000">矩阵转置的转置等于矩阵本身：$\left ( A^{\top} \right )^{\top} = A$</font>
+* <font color="#ff0000">$(A+B)^{\top} = A^{\top} + B^{\top}$</font>
+* <font color="#ff0000">$(\lambda A)^{\top} = \lambda A^{\top}$</font>
+* <font color="#ff0000">$(AB)^{\top} = B^{\top}A^{\top}$</font>
 
-* 转置（transpose）：
+```python
+# 矩阵转置
+import numpy as np
+
+A = np.array([[1,2],[1,0],[2,3]])  # 矩阵A
+A_t = A.transpose() # 矩阵转置
+A_t_t = A.transpose().transpose() # 矩阵转置的转置
+
+print("A:\n", A)
+print("A的转置:\n", A_t)
+print("A转置的转置:\n", A_t_t)
+
+# output:
+A:
+ [[1 2]
+ [1 0]
+ [2 3]]
+A的转置:
+ [[1 1 2]
+ [2 0 3]]
+A转置的转置:
+ [[1 2]
+ [1 0]
+ [2 3]]
+```
+
+#### 矩阵加法
+
+&emsp;&emsp;加法即**对应元素相加**，要求两个矩阵形状一样：</br>
+<center>$C = A + B,C_{i,j} = A_{i,j} + B_{i,j}$</center></br>
+
+&emsp;&emsp;**数乘**即一个**标量**与**矩阵每个元素相乘**：</br>
+<center>$D=a\cdot B+c,D_{i,j}=a\cdot B_{i,j}+c$</center></br>
+
+&emsp;&emsp;广播是矩阵和向量相加，得到一个矩阵，将$b$加到了$A$的每一行上，本质上是构造了一个将$b$按行复制的一个新矩阵。</br>
+<center>$C=A+b,C_{i,j}=A_{i,j}+b_{j}$</center>
+
+```python
+# 矩阵加法
+import numpy as np 
+a = 2     # 标量a
+b = np.array([1,1]) # 向量b
+A = np.array([[1,2],[3,4]]) # 矩阵A
+B = np.array([[5,6],[7,8]]) # 矩阵B
+
+C = A + B # 矩阵相加
+D = a * B # 数乘
+E = A + b # 广播
+
+print("矩阵相加:\n", C)
+print("数乘:\n", D)
+print("广播:\n", E)
+
+# output:
+矩阵相加:
+ [[ 6  8]
+ [10 12]]
+数乘:
+ [[10 12]
+ [14 16]]
+广播:
+ [[2 3]
+ [4 5]]
+```
 
 ### 矩阵和向量相乘
+
+&emsp;&emsp;两个矩阵相乘得到第三个矩阵，$A_{m\times n},B_{n\times p}$，相乘得到矩阵$C_{m\times p}$：
+<center>$C=AB$</center></br>
+<center>$$</center></br>
+矩阵相乘不是对应元素相乘，元素对应相乘又叫Hadamard乘积，记作$$。
 
 ### 单位矩阵和逆矩阵
 
