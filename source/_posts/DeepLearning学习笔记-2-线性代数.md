@@ -123,14 +123,141 @@ print("广播:\n", E)
 
 &emsp;&emsp;两个矩阵相乘得到第三个矩阵，$A_{m\times n},B_{n\times p}$，相乘得到矩阵$C_{m\times p}$：
 <center>$C=AB$</center></br>
-<center>$$</center></br>
-矩阵相乘不是对应元素相乘，元素对应相乘又叫Hadamard乘积，记作$$。
+
+&emsp;&emsp;具体定义为：
+<center>$C_{i,j}=\sum_{k}A_{i,k}B_{k,j}$</center></br>
+
+&emsp;&emsp;矩阵相乘不是对应元素相乘，元素对应相乘又叫Hadamard乘积，记作$A\odot B$。</br>
+&emsp;&emsp;向量可看作列为1的矩阵，两个相同维数的向量$x$和$y$的点乘（Dot Product）或者内积，可以表示为$x^{\top }y$。</br>
+
+&emsp;&emsp;矩阵乘积运算满足**分配率**和**结合律**：
+<center><font color="#ff0000">$A\left ( B+C \right )=AB+AC$</font></center></br>
+<center><font color="#ff0000">$A\left ( BC \right )=\left ( AB \right )C$</font></center></br>
+
+&emsp;&emsp;不满足**交换律**：
+<center><font color="#ff0000">$AB=BA$，情况并非总满足</font></center></br>
+&emsp;&emsp;乘积的转置：
+<center><font color="#ff0000">$\left ( AB \right )^{\top }=B^{\top}A^{\top}$</font></center>
+
+```python
+# 矩阵乘法
+import numpy as np
+A = np.array([[1,2],[3,4]]) # 矩阵A
+B = np.array([[5,6],[7,8]]) # 矩阵B
+
+x = np.array([1,2]) # 向量x
+y = np.array([3,4]) # 向量y
+
+C = np.dot(A, B) # 矩阵相乘
+D = np.multiply(A, B) # 矩阵逐元素相乘，又叫Hadamard乘积，同 A*B
+
+z = np.dot(x, y) # 向量点乘或内积, 同x的转置乘y 
+
+print("矩阵相乘:\n", C)
+print("矩阵逐元素相乘:\n", D)
+print("向量内积:\n", z)
+
+# output
+矩阵相乘:
+ [[19 22]
+ [43 50]]
+矩阵逐元素相乘:
+ [[ 5 12]
+ [21 32]]
+向量内积:
+ 11
+```
 
 ### 单位矩阵和逆矩阵
 
-### 线性相关和生成子空间
+&emsp;&emsp;**单位矩阵**（Identity Matrix）为乘以任意一个向量等于这个向量本身，记为：$I_{n}$，为保持$n$维向量不变的单位矩阵：
+<center>$I_{n}\in \mathbb{R}^{n\times n},\forall x\in \mathbb{R}^{n},I_{n}x=x$</center></br>
+
+&emsp;&emsp;单位矩阵结构如：
+
+$$\begin{bmatrix}
+1 & 0 & 0\\\\
+0 & 1 & 0\\\\
+0 & 0 & 1
+\end{bmatrix}$$
+
+&emsp;&emsp;**逆矩阵（Inverse Matrix）**：对于$n$阶矩阵$A$，如果有一个$n$阶矩阵$B$，使$AB=BA=I^{n}$，则矩阵$A$可逆，$B$为$A$的**逆矩阵**，$B=A^{-1}$。
+
+&emsp;&emsp;如果$A^{-1}$存在，则线性方程组$Ax=b$的解为：
+<center>$A^{-1}Ax=I_{n}x=x=A^{-1}b$</center></br>
+
+* <font color="#ff0000">定理1：若矩阵$A$可逆，则$|A|\neq 0$。</font>
+* <font color="#ff0000">定理2：若$|A|\neq 0$，则矩阵$A$可逆，且$A^{-1}=\frac{1}{|A|}A^{\ast }$，$A^{\ast}$为矩阵$A$的**伴随矩阵**。</font>
+* <font color="#ff0000">定理3：当$|A|=0$时，称$A$为**奇异矩阵**。</font>
+* <font color="#ff0000">定理4：$\left ( \lambda A \right )^{-1}=\frac{1}{\lambda}A^{-1}$</font>
+* <font color="#ff0000">定理5：$\left ( AB \right )^{-1}=B^{-1}A^{-1}$</font>
+
+```python
+# 单位矩阵
+I3 = np.identity(3)    # 单位矩阵
+print("单位矩阵:\n",I3)
+
+# 逆矩阵
+A = np.array([[1,2,3],[2,2,1],[3,4,3]]) # 矩阵A
+A_inv = np.linalg.inv(A)  # 矩阵A的逆矩阵
+print("A的逆矩阵:\n", A_inv)
+
+# output:
+单位矩阵:
+ [[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+A的逆矩阵:
+ [[ 1.   3.  -2. ]
+ [-1.5 -3.   2.5]
+ [ 1.   1.  -1. ]]
+```
+
+#### 手动推算
+<img src="/images/inverse_matrix.jpg" width="600px"></img>
 
 ### 范数
+
+&emsp;&emsp;**范数（norm）**用来衡量向量的大小，向量$\mathbb{L}^{p}$范数定义为：
+<center>$\left \| x \right \|_{p}=\left ( \sum_{i}\left | x_{i} \right |^{p} \right )^{\frac{1}{p}},p\in \mathbb{R},p\geqslant 1$</center></br>
+
+&emsp;&emsp;$L^{2}$范数，也称为欧几里得范数（Euclidean norm），是**向量$x$到原点的欧几里得距离**，$L^{2}$范数不一定适用于所有情况，当区别0和非常小但非0值的情况，$L^{1}$范数是一个比较好的选择。
+&emsp;&emsp;$L^{1}$范数，在所有方向上的速率是一样的，定义为：
+<center>$\left \| x \right \|_{1}=\sum_{i}\left | x_{i} \right |$</center></br>
+
+&emsp;&emsp;<font color="#ff0000">经常用于<b>区分0</b>和<b>非0元素</b>的情形中。</font></br>
+&emsp;&emsp;$L^{0}$范数，可用于衡量向量中非0元素的个数，但它并不是一个范数。
+
+&emsp;&emsp;$L^{\infty }$范数，向量元素绝对值的最大值，也叫做（Max norm）：
+<center>$\left \| x \right \|_{\infty }=\underset{i}{max}\left | x_{i} \right |$</center></br>
+&emsp;&emsp;机器学习中常用的$F$范数（Frobenius norm），定义为：
+<center>$\left \| A \right \|_{F}=\sqrt{\sum_{i,j}A_{i,j}^{2}}$</center>
+
+```python
+# 范数
+a = np.array([1,2,3])  # 向量a
+L1 = np.linalg.norm(a, ord=1) # 向量1范数
+L2 = np.linalg.norm(a, ord=2) # 向量2范数（欧几里得范数）
+Ln = np.linalg.norm(a, ord=np.inf) # 向量无穷范数（最大范数）
+
+A = np.array([[1,2],[3,4]]) # 矩阵A
+A_f = np.linalg.norm(A, ord="fro")
+
+print(L1)
+print(L2)
+print(Ln)
+print(A_f)
+
+# output：
+6.0
+3.7416573867739413
+3.0
+5.477225575051661
+```
+
+#### 手动推导
+<img src="/images/norm.jpg" width="400px"></img>
+
 
 ### 特殊类型的矩阵和向量
 
