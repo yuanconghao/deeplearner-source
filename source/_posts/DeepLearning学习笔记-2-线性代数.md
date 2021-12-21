@@ -1,7 +1,7 @@
 ---
 title: DeepLearning学习笔记-2.线性代数
 date: 2021-12-09 00:38:44
-updated: 2021-12-19 00:38:44
+updated: 2021-12-21 00:38:44
 toc: true
 mathjax: true
 categories:
