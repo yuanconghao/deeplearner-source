@@ -256,20 +256,122 @@ print(A_f)
 5.477225575051661
 ```
 
-#### 手动推导
+#### 手动推算
 <img src="/images/norm.jpg" width="400px"></img>
 
 
 ### 特殊类型的矩阵和向量
 
+&emsp;&emsp;**对角矩阵（diagonal matrix）**：只在主对角线含有非零元素，其余位置为零。如：
+
+$$\begin{bmatrix}
+1 & 0 & 0\\\\ 
+0 & 2 & 0\\\\ 
+0 & 0 & 3
+\end{bmatrix}$$
+
+并非所有的对角矩阵都是方阵，长方形矩阵也可能为对角矩阵，但没有逆矩阵。
+
+&emsp;&emsp;**对称矩阵（symmetric matrix）**：是转置和自己相等的矩阵。即：
+
+<center>$A=A^{\top}$</center></br>
+
+&emsp;&emsp;**单位向量（unit ventor）**：是具有**单位范数（unit norm）**的向量，即：
+
+<center>$\left \| x_{2} \right \|=1$</center></br>
+
+若$x^{\top}y=0$，则向量$x$和向量$y$互相**正交（orthogonal）**。正交且范数为1，则称为**标准正交**，即：$A^{\top}A=AA^{\top}=I$，$A^{-1}=A^{\top}$。
+
 ### 特征分解
+
+&emsp;&emsp;**矩阵分解（eigendecompostion）**是使用最广的矩阵分解之一，即将矩阵分解成一组**特征向量**和**特征值**。
+
+&emsp;&emsp;方阵$A$的**特征向量（eigenvector）**是指与$A$相乘后相当于对该向量进行缩放的非零向量$v$:
+
+<center>$Av=\lambda v$</center></br>
+
+&emsp;&emsp;其中标量$\lambda$称为这个特征向量对应的**特征值（eigenvalue）**。
+
+&emsp;&emsp;如果一个$n\times n$矩阵$A$有$n$组线性无关的单位特征向量$\\{ v^{(1)},...,v^{(n)} \\}$，以及对应的特征值$\lambda _{1},...,\lambda _{n}$。将这些特征向量按列拼接成一个矩阵$V=\left [ v^{(1)},...,v^{(n)} \right]$，并将对应的特征值拼接成一个向量：$\lambda=\left [\lambda _{1},...,\lambda _{n}\right ]$。
+&emsp;&emsp;$A$的特征值分解为：
+<center>$A=V_{diag}(\lambda)V^{-1}$</center></br>
+
+&emsp;&emsp;所有特征值都是正数的矩阵称为**正定（positive definite）**；所有特征值都是非负数的矩阵称为**半正定（positive semidefinite）**；所有特征值都是负数的矩阵称为**负定（negative definite）**；所有特征值都是非正数的矩阵称为**半负定（negative semidefinite）**；
+
+注意：
+* 不是所有的矩阵都有特征分解。
+* 在某些情况下，实矩阵的特征值分解可能会得到复矩阵。
+
+
+```python
+# 特征值和特征向量
+A=np.array([[-1,1,0],[-4,3,0],[1,0,2]]) # 矩阵A
+
+# 计算特征值
+A_eig = np.linalg.eigvals(A)
+
+# 计算特征值和特征向量
+A_eig,A_eigvector = np.linalg.eig(A) 
+
+print("特征值：\n", A_eig)
+print("特征向量：\n", A_eigvector)
+
+# output:
+特征值：
+ [2. 1. 1.]
+特征向量：
+ [[ 0.          0.40824829  0.40824829]
+ [ 0.          0.81649658  0.81649658]
+ [ 1.         -0.40824829 -0.40824829]]
+```
+
+#### 手动推算
+<img src="/images/eigvector.jpg" width="600px"></img>
+
 
 ### 奇异值分解
 
-### Moore-Penrose伪逆
+&emsp;&emsp;**奇异值分解（singular value decomposition,SVD）**将矩阵分解为**奇异向量（singular vector）**和**奇异值（singular value）**。与特征值分解相⽐，奇异值分解更加通⽤，所有的实矩阵都可以进⾏奇异值分解，⽽特征值分解只对某些⽅阵可以。
+
+&emsp;&emsp;奇异值分解的形式为：
+<center>$A=UDV^{\top}$</center></br>
+
+&emsp;&emsp;若$A$是 $m \times n$ 的，那么 $U$ 是 $m \times m$ 的，其列向量称为左奇异向量，⽽ $V$ 是 $n \times n$ 的，其列向量称为右奇异向量，⽽ $D$ 是 $m \times n$ 的⼀个对⾓矩阵，其对⾓元素称为矩阵 $A$ 的奇异值。左奇异向量是 $AA^{\top}$ 的特征向量，⽽右奇异向量是 $A^{\top}A$ 的特征向量，⾮ 0 奇异值的平⽅是 $A^{\top}A$ 的⾮ 0 特征值。
+
+```python
+# 奇异值分解
+A = np.array([[0,1],[1,1],[1,0]]) # 矩阵A
+
+U,D,V = np.linalg.svd(A)
+
+print("矩阵U:\n", U)
+print("矩阵D:\n", D)
+print("矩阵V:\n", V)
+
+# output:
+矩阵U:
+ [[-4.08248290e-01  7.07106781e-01  5.77350269e-01]
+ [-8.16496581e-01  2.64811510e-17 -5.77350269e-01]
+ [-4.08248290e-01 -7.07106781e-01  5.77350269e-01]]
+矩阵D:
+ [1.73205081 1.        ]
+矩阵V:
+ [[-0.70710678 -0.70710678]
+ [-0.70710678  0.70710678]]
+```
+
+#### 手动推算
 
 ### 迹运算
 
+&emsp;&emsp;**迹运算**返回的是矩阵对角元素的和：
+
+<center>$Tr(A)=\sum_{i}A_{i,j}$</center></br>
+
 ### 行列式
 
+&emsp;&emsp;**行列式**，$det(A)$是将一个方阵$A$映射到实数的函数。行列式等于矩阵特征值的乘积。行列式的绝对值可以用来衡量矩阵参与矩阵乘法后空间扩大或者缩小了多少。
+
 ### 主成分分析
+
+&emsp;&emsp;**主成分分析（principal components analysis，PCA）**是一种简单的机器学习算法。主要用于降维。
