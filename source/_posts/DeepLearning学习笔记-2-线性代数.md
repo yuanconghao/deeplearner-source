@@ -55,6 +55,8 @@ A_{2,1} & A_{2,2}
 * <font color="#ff0000">$(\lambda A)^{\top} = \lambda A^{\top}$</font>
 * <font color="#ff0000">$(AB)^{\top} = B^{\top}A^{\top}$</font>
 
+#### 程序实现
+
 ```python
 # 矩阵转置
 import numpy as np
@@ -91,6 +93,8 @@ A转置的转置:
 
 &emsp;&emsp;广播是矩阵和向量相加，得到一个矩阵，将$b$加到了$A$的每一行上，本质上是构造了一个将$b$按行复制的一个新矩阵。</br>
 <center>$C=A+b,C_{i,j}=A_{i,j}+b_{j}$</center>
+
+#### 程序实现
 
 ```python
 # 矩阵加法
@@ -139,6 +143,8 @@ print("广播:\n", E)
 <center><font color="#ff0000">$AB=BA$，情况并非总满足</font></center></br>
 &emsp;&emsp;乘积的转置：
 <center><font color="#ff0000">$\left ( AB \right )^{\top }=B^{\top}A^{\top}$</font></center>
+
+#### 程序实现
 
 ```python
 # 矩阵乘法
@@ -193,6 +199,8 @@ $$\begin{bmatrix}
 * <font color="#ff0000">定理4：$\left ( \lambda A \right )^{-1}=\frac{1}{\lambda}A^{-1}$</font>
 * <font color="#ff0000">定理5：$\left ( AB \right )^{-1}=B^{-1}A^{-1}$</font>
 
+#### 程序实现
+
 ```python
 # 单位矩阵
 I3 = np.identity(3)    # 单位矩阵
@@ -233,6 +241,8 @@ A的逆矩阵:
 <center>$\left \| x \right \|_{\infty }=\underset{i}{max}\left | x_{i} \right |$</center></br>
 &emsp;&emsp;机器学习中常用的$F$范数（Frobenius norm），定义为：
 <center>$\left \| A \right \|_{F}=\sqrt{\sum_{i,j}A_{i,j}^{2}}$</center>
+
+#### 程序实现
 
 ```python
 # 范数
@@ -302,6 +312,7 @@ $$\begin{bmatrix}
 * 不是所有的矩阵都有特征分解。
 * 在某些情况下，实矩阵的特征值分解可能会得到复矩阵。
 
+#### 程序实现
 
 ```python
 # 特征值和特征向量
@@ -337,6 +348,18 @@ print("特征向量：\n", A_eigvector)
 <center>$A=UDV^{\top}$</center></br>
 
 &emsp;&emsp;若$A$是 $m \times n$ 的，那么 $U$ 是 $m \times m$ 的，其列向量称为左奇异向量，⽽ $V$ 是 $n \times n$ 的，其列向量称为右奇异向量，⽽ $D$ 是 $m \times n$ 的⼀个对⾓矩阵，其对⾓元素称为矩阵 $A$ 的奇异值。左奇异向量是 $AA^{\top}$ 的特征向量，⽽右奇异向量是 $A^{\top}A$ 的特征向量，⾮ 0 奇异值的平⽅是 $A^{\top}A$ 的⾮ 0 特征值。
+
+#### SVD分解矩阵A的步骤
+
+---------
+
+1. 求$AA^{\top }$的特征值和特征向量，用单位化的特征向量构成$U$。
+2. 求$A^{\top }A$的特征值和特征向量，用单位化的特征向量构成$V$。
+3. 将$AA^{\top }$或者$A^{\top }A$的特征值求平方根，构成$D$。
+
+---------
+
+#### 程序实现
 
 ```python
 # 奇异值分解
@@ -381,7 +404,7 @@ print("矩阵V:\n", V)
 
 #### 背景与作用
 &emsp;&emsp;在研究与应用中，需要对收集的大量数据进行分析，随着数据集变量增多，且变量间可能存在相关性，便加大了问题分析的复杂性，如果对每个指标进行分析，往往分析是孤立的，不能完全利用数据中的信息，而盲目的减少指标会损失很多有用的信息，产生错误的结论。
-&emsp;&emsp;因此，需要找到一种合理的方法，对指标进行降维，既要减少分析的指标，又要达到对所收集的数据进行全面分析的目的。降维算法如：**奇异值分解(SVD)** 、**主成分分析(PCA)** 、**因子分析(FA)** 、**独立成分分析(ICA)**。
+&emsp;&emsp;因此，需要找到一种合理的方法，对指标进行降维，既要减少分析的指标，又要达到对所收集的数据进行全面分析的目的。降维算法如：**奇异值分解(SVD)** 、**主成分分析(PCA)** 、**因子分析(FA)** 、**独立成分分析(ICA)** 。
 &emsp;&emsp;降维是一种对高维度特征数据预处理方法。是将高维度的数据保留下最重要的一些特征，去除噪声和不重要特征，实现提升数据处理速度的目的。在实际生产和应用中，降维在一定的信息损失范围内，可帮助我们节省大量时间和成本。降维的优点：
 
 * 使数据集更易使用
@@ -392,7 +415,81 @@ print("矩阵V:\n", V)
 #### PCA概念
 &emsp;&emsp;PCA(Principal Component Analysis)，即主成分分析方法，是一种使用最广泛的数据降维算法。PCA的主要思想是将n维特征映射到k维上，这k维是全新的正交特征也被称为主成分，是在原有n维特征的基础上重新构造出来的k维特征。PCA的工作就是从原始的空间中顺序地找一组相互正交的坐标轴，新的坐标轴的选择与数据本身是密切相关的。其中，第一个新坐标轴选择是原始数据中方差最大的方向，第二个新坐标轴选取是与第一个坐标轴正交的平面中使得方差最大的，第三个轴是与第1,2个轴正交的平面中方差最大的。依次类推，可以得到n个这样的坐标轴。通过这种方式获得的新的坐标轴，我们发现，大部分方差都包含在前面k个坐标轴中，后面的坐标轴所含的方差几乎为0。于是，我们可以忽略余下的坐标轴，只保留前面k个含有绝大部分方差的坐标轴。事实上，这相当于只保留包含绝大部分方差的维度特征，而忽略包含方差几乎为0的特征维度，实现对数据特征的降维处理。
 
-#### 
+#### PCA算法
+
+----------
+
+**输入：** 样本集$D=\left \\{ x_{1},x_{2},...,x_{m} \right \\}$ ; 低维空间维数$k$ 。
+**过程：**
+1. 对所有样本进行去中心化，即每一位特征减去各自的平均值：$x_{i}\leftarrow x_{i}-\frac{1}{m}\sum_{i=1}^{m}x_{i}$ ;
+2. 计算样本的协方差矩阵：$XX^{\top}$ ;
+3. 对协方差矩阵$XX^{\top}$做特征值分解 ;
+4. 对特征值从大到小排序，取最大的$k$个所对应的特征向量$w_{1},w_{2},...,w_{k}$ 。
+**输出：** 投影矩阵$W=(w_{1},w_{2},...,w_{k})$。
+
+----------
+
+#### 代码实现
+
+```python
+# Python实现
+class PCA():
+    def __init__(self):
+        pass
+    
+    def fit(self, X, k):
+        n_samples = np.shape(X)[0]
+        covariance_matrix = (1 / (n_samples-1)) * (X - X.mean(axis=0)).T.dot(X - X.mean(axis=0))
+        # 对协方差矩阵进行特征值分解
+        eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
+        # 对特征值（特征向量）从大到小排序
+        idx = eigenvalues.argsort()[::-1]
+        eigenvalues = eigenvalues[idx][:k]
+        eigenvectors = np.atleast_1d(eigenvectors[:, idx])[:, :k]
+        # 得到低维表示
+        X_transformed = X.dot(eigenvectors)
+        return X_transformed
+
+
+# 矩阵X降到1维
+X = np.array([[-1,-2],[-1,0],[0,0],[2,1],[0,1]]) # 矩阵X
+
+model = PCA()
+Y = model.fit(X, 1)
+
+print(Y)
+
+output:
+[[-2.12132034]
+ [-0.70710678]
+ [ 0.        ]
+ [ 2.12132034]
+ [ 0.70710678]]
+```
+
+```python
+# sklearn实现
+from sklearn.decomposition import PCA
+
+X = np.array([[-1,-2],[-1,0],[0,0],[2,1],[0,1]]) # 矩阵X
+
+pca=PCA(n_components=1)
+pca.fit(X)
+
+print(pca.transform(X))
+
+output:
+[[ 2.12132034]
+ [ 0.70710678]
+ [ 0.        ]
+ [-2.12132034]
+ [-0.70710678]]
+```
+
+sklearn对奇异值分解结果进行了处理，会导致PCA降维结果不一致，但都正确。
+
+#### 手动推算
+
 
 
 
