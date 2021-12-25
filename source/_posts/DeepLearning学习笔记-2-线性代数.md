@@ -490,6 +490,8 @@ sklearn对奇异值分解结果进行了处理，会导致PCA降维结果不一�
 
 #### 手动推算
 
+<img src="/images/pca1.jpg" width="600px"></img>
+<img src="/images/pca2.jpg" width="600px"></img>
 
 
 
