@@ -18,9 +18,7 @@ categories:
 <!--more-->
 
 
-
-
-<!-- <object data="/pdf/AlexNet.pdf" type="application/pdf" width="800px" height="1000px"> -->
+{% pdf /pdf/AlexNet.pdf %}
 
 
 
