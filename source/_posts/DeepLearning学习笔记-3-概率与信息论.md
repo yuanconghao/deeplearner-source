@@ -430,4 +430,23 @@ for ax in axes:
 
 ### 信息论
 
+&emsp;&emsp;**信息论**是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。**信息论背后的思想：**一件不太可能的事件比一件比较可能的事件更有信息量。
+
+&emsp;&emsp;**信息（Information）**需要满足三个条件：
+* 非常可能发生的事件信息量比较少。
+* 较不可能发生的事件具有更高的信息量。
+* 独立事件应具有增量的信息。
+
+&emsp;&emsp;**自信息（Self-Information）** ：对事件$X=x$，定义：
+
+<center>$I(x)=-logP(x)$</center>
+
+&emsp;&emsp;$log$为底为$e$的自然对数；$I(x)$单位为**奈特（nats）** 。
+
+&emsp;&emsp;**香农熵（Shannon Entropy）** ：自信息只包含一个事件的信息，而对于**整个概率分布中的不确定性总量**可用香农熵进行量化：
+
+<center>$H(x)=\mathbb{E}_{X\sim P}\left [ I(x) \right ]=-\mathbb{E}_{X\sim P}\left [ logP(x) \right ]$</center>
+
+&emsp;&emsp;一个分布的香农熵是指这个分布的事件所产生的期望信息总量。香农熵是编码原理中最优编码长度。
+
 ### 结构化概率模型
