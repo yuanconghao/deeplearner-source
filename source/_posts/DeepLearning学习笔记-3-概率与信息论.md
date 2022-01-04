@@ -383,7 +383,7 @@ plot_distribution(X, axes=axes)
 
 <center>$\xi=log(1+exp(x))$</center>
 
-可以用来产生正态分布的$\beta$和$\apha$参数，它的范围是$(0,\propto )$。当处理包含sigmoid函数的表达式时它也经常出现。softplus函数名来源于它是另外一个函数的平滑形式，函数如下：
+可以用来产生正态分布的$\beta$和$\alpha$参数，它的范围是$(0,\propto )$。当处理包含sigmoid函数的表达式时它也经常出现。softplus函数名来源于它是另外一个函数的平滑形式，函数如下：
 
 <center>$x^{+}=max(0,x)$</center>
 
