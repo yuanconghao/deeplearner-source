@@ -120,7 +120,9 @@ x_{2}
 
 ### 基于梯度的优化方法
 
-&emsp;&emsp;深度学习算法都涉及到某种形式的优化，优化指改变$x$以最小化或最大化某个函数$f(x)$的任务。
+&emsp;&emsp;深度学习算法都涉及到某种形式的优化，优化指改变$x$以最小化或最大化某个函数$f(x)$的任务。**目标函数（Objective Function）** ：把要最小化或最大化的函数称为目标函数。对其进行最小化时，称为**损失函数（Loss Function）** 或 **误差函数（Error Function）**。梯度下降时无约束优化最常用的方法之一，另一种为最小二乘法。
+
+&emsp;&emsp;**梯度下降（Gradient Descent）** <font color="#ff0000"><sup>[[2][2]]</sup></font>： 
 
 
 #### Jacobian矩阵和Hessian矩阵
@@ -132,3 +134,5 @@ x_{2}
 
 
 [1]:https://www.pianshen.com/article/459993619/
+[2]:https://www.cnblogs.com/pinard/p/5970503.html
+[3]:https://www.zhihu.com/question/305638940
