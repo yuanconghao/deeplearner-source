@@ -77,7 +77,37 @@ $F1=\frac{2\cdot Precision\cdot Recall}{Precision+Recall}$
 <center>$\Rightarrow w=(X^{(train)\top}X^{(train)})^{-1}X^{(train)\top}y^{(train)}$</center>
 
 
+```python
+import numpy as np
+import math
+import matplotlib.pyplot as plt
 
+# y = wx + b
+X = np.hstack((np.array([[-0.5,-0.45,-0.35,-0.35,-0.1,0,0.2,0.25,0.3,0.5]]).reshape(-1, 1), np.ones((10,1))*1))
+y = np.array([-0.2,0.1,-1.25,-1.2,0,0.5,-0.1,0.2,0.5,1.2]).reshape(-1,1)
+
+# 最小化MSE,w详见公式
+w = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+print("Weight:", list(w))
+
+hat_y = X.dot(w)
+x = np.linspace(-1, 1, 50)
+hat_y = x * w[0] + w[1]
+plt.figure(figsize=(4,4))
+plt.xlim(-1.0, 1.0)
+plt.xticks(np.linspace(-1.0, 1.0, 5))
+plt.ylim(-3, 3)
+plt.plot(x, hat_y, color='red')
+plt.scatter(X[:,0], y[:,0], color='black')
+plt.xlabel('$x_1$')
+plt.ylabel('$y$')
+plt.title('$Linear Regression$')
+plt.show()
+
+# output
+Weight: [array([1.49333333]), array([0.04966667])]
+```
+<img src="/images/linearregression.png"></img>
 
 
 ### 容量、过拟合和欠拟合
