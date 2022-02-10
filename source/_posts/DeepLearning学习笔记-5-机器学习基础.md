@@ -1,5 +1,5 @@
 ---
-title: DeepLearning学习笔记-5.机器学习基础[未更新完]
+title: DeepLearning学习笔记-5.机器学习基础
 date: 2022-01-10 00:27:23
 toc: true
 mathjax: true
@@ -299,7 +299,11 @@ plt.show()
 
 ### 监督学习算法
 
-#### 概率监督学习
+&emsp;&emsp;监督学习算法是给定一组输入$x$和输出$y$的训练集，学习如何关联输入和输出。在[人工智能是什么][6]一文中已经对监督学习和无监督学习进行了整理和划分。
+
+<img src="/images/jiandusuanfa.png" width="500px"></img>
+
+&emsp;&emsp;机器学习算法后续会专门整理、归纳、总结。
 
 #### 支持向量机
 
@@ -309,23 +313,41 @@ plt.show()
 
 #### 主成分分析
 
+详见：[DeepLearning学习笔记-2.线性代数][4] 
+
 #### k-均值聚类
 
 ### 随机梯度下降
 
+详见：[DeepLearning学习笔记-4.数值计算][5] 
+
 ### 构建机器学习算法
+
+&emsp;&emsp;几乎所有的深度学习算法都是一样的流程：特定的数据集、代价函数、优化过程和模型。
 
 ### 深度学习发展的挑战
 
+&emsp;&emsp;高维数据在新样本上泛化苦难，传统机器学习中实现泛化机制不适合学习高维空间中的复杂函数，涉及到巨大空间问题，计算代价很大，深度学习则旨在客服这些以及其他一些难题。
+
 ##### 维数灾难
+
+&emsp;&emsp;当数据的维数很高时，很多机器学习问题变得相当困难，这种现象被称为维数灾难（Curse of Dimensionality）。维数灾难带来的一个挑战是统计挑战。
 
 #### 局部不变形和平滑正则化
 
+&emsp;&emsp;为更好地泛化，机器学习算法需要由先验信念引导该学习什么类型的函数。先验信念还间接地体现在选择一些偏好某类函数的算法。其中使用最广泛的隐式先验是“平滑先验”和“局部不变性先验”，表明学习的函数不应在小区域内发生很大的变化。
+
 #### 流行学习
 
+&emsp;&emsp;**流行（Manifold）**是指连接在一起的区域。**流行学习（Manifold Learning）**算法通过一个假设来克服很多机器学习问题无望的障碍。该假设认为$R^{n}$中大部分区域都是无效的输入，有意义的输入只分布在包含少量数据点的子集构成的一组流行中，而学习函数的输出中，有意义的变化都沿着流行的方向或仅发生在我们切换到另一流行时。（难懂，先看应用场景，后续再研究）
 
+&emsp;&emsp;主要用于图像降维<sup>[[7][7]]</sup>。
 
 
 [1]:https://www.pianshen.com/article/459993619/
 [2]:https://blog.csdn.net/u011508640/article/details/72815981
 [3]:https://zhuanlan.zhihu.com/p/46737512
+[4]:https://deeplearner.top/2021/12/09/DeepLearning%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90
+[5]:https://deeplearner.top/2022/01/04/DeepLearning%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-4-%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/#%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95
+[6]:https://deeplearner.top/2021/11/29/AI%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E5%8F%8A%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/
+[7]:https://zhuanlan.zhihu.com/p/40214106
