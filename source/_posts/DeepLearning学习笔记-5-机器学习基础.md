@@ -1,5 +1,5 @@
 ---
-title: DeepLearning学习笔记-5.机器学习基础
+title: DeepLearning学习笔记-5.机器学习基础[未更新完]
 date: 2022-01-10 00:27:23
 toc: true
 mathjax: true
@@ -136,40 +136,158 @@ Weight: [array([1.49333333]), array([0.04966667])]
 
 <img src="/images/capacity.png" width="600px"></img>
 
-
 #### 没有免费午餐定理
 
-&emsp;&emsp;**没有免费午餐定理（No Free Lunch Theorem）** ，在所有的数据生成分布上平均后，最先进的算法和简单的算法在性能上相差无异。通俗来讲，机器学习没有通用的学习算法来处理所有的概率分布问题，而是需要根据什么样的分布，采用什么样的机器学习算法在该数据分布上效果最好。
+&emsp;&emsp;**没有免费午餐定理（No Free Lunch Theorem）** ，通俗来讲，“没有最优的学习算法”。在所有的数据生成分布上平均后，最先进的算法和简单的算法在性能上相差无异。机器学习没有通用的学习算法来处理所有的概率分布问题，而是需要根据什么样的分布，采用什么样的机器学习算法在该数据分布上效果最好。
 
 #### 正则化
 
-
+&emsp;&emsp;正则化（Regularization）是指修改学习算法，使其降低泛化误差而非训练误差。
 
 ### 超参数和验证集
 
+&emsp;&emsp;**超参数**:用来控制学习算法的参数而非学习算法本身学出来的参数。例如，进行曲线的回归拟合时，曲线的次数就是一个超参数；在构建模型对一些参数的分布假设也是超参数。
+
+&emsp;&emsp;**验证集**：通常在需要选取超参数时，将训练集再划分为训练和验证集两部分，使用新的训练集训练模型，验证集用来进行测试和调整超参。通常，80%的训练数据用于训练学习参数，20%用于验证。
+
 #### 交叉验证
+
+&emsp;&emsp;**k折交叉验证**：将数据集均分为不相交的k份，每次选取其中的一份作为测试集，其他的为训练集，训练误差为k次的平均误差。
+
+----------
+**k-折交叉验证算法**
+**Define** KFlodXV($\mathbb{D},A,L,k$):
+**Require:** $\mathbb{D}$为给定的数据集，其中元素为$z^{(i)}$
+**Require:** $A$为学习算法，可视为一个函数（使用数据集作为输入，输出一个学好的函数）
+**Require:** $L$为损失函数，可视为来自学好的函数$f$，将样本$z^{(i)}\in \mathbb{D}$映射到$\mathbb{R}$中标量的函数
+**Require:** $k$为折数
+&emsp;&emsp;将$\mathbb{D}$分为$k$个互斥子集$\mathbb{D}\_{i}$，它们的并集为$\mathbb{D}$
+&emsp;&emsp;for $i$ from 1 to $k$ do
+&emsp;&emsp;&emsp;&emsp;$f\_{i}=A(\mathbb{D}\setminus \mathbb{D}\_{i})$
+&emsp;&emsp;&emsp;&emsp;for $z^{(j)}$ in $\mathbb{D}\_{i}$ do
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$e\_{j}=L(f\_{i},z^{(j)})$
+&emsp;&emsp;&emsp;&emsp;end for
+&emsp;&emsp;end for
+&emsp;&emsp;Return $e$
+----------
+
+##### 代码实现
+
+```python
+
+def KFoldCV(D, A, k):
+    """
+    k-fold 交叉验证
+    参数说明：
+    D：给定数据集
+    A：学习函数
+    k：折数
+    """
+    np.random.shuffle(D)
+    dataset = np.split(D, k)
+    acc_rate = 0
+    for i in range(k):
+        train_set = dataset.copy()
+        test_set = train_set.pop(i)
+        train_set = np.vstack(train_set)
+        A.train(train_set[:,:-1], train_set[:,-1]) # 每次的训练集
+        labels = A.fit(test_set[:,:-1]) # 每次的测试集
+        acc_rate += np.mean(labels==test_set[:,-1]) # 计算平均误差
+    return acc_rate/k
+
+```
 
 ### 估计、偏差和方差
 
 #### 点估计
 
+&emsp;&emsp;点估计试图为一些感兴趣的量提供单个“最优”预测。
+
 #### 偏差
+
+&emsp;&emsp;估计的偏差被定义为
+<center>$bias(\hat{\theta}_{m})=\mathbb{E}(\hat{\theta}_{m})-\theta$</center>
+&emsp;&emsp;期望作用在所有数据上，$\theta$用于定于数据生成分布的$\theta$的真实值。
 
 #### 方差和标准差
 
-#### 权衡偏差和方差以最小化均方误差
+&emsp;&emsp;估计的方差被定义为
+<center>$Var(\hat{\theta})$</center>
+&emsp;&emsp;方差反映的是模型每一次输出结果与模型输出期望之间的误差，即模型的稳定性。
 
-#### 一致性
+&emsp;&emsp;标准差被记为
+<center>$SE(\hat{\mu _{m}})=\sqrt{Var\left [ \frac{1}{m}\sum_{i=1}^{m}x^{(i)} \right ]}=\frac{\sigma }{\sqrt{m}}$</center>
+&emsp;&emsp;其中，$\sigma^{2}$是样本$x^{(i)}$的真实方差，标准差通常被记为$\sigma$。
+
+#### 误差与偏差和方差的关系
+
+&emsp;&emsp;泛化误差可分解为偏差、方差和噪音之和。需要在模型复杂度之间权衡，使偏差和方差得以均衡，这样模型的整体误差才会最小。
+<img src="/images/capacity3.png" width="600px"></img>
+&emsp;&emsp;当容量增大时，偏差随之减小；而方差随之增大，泛化误差为U型。
 
 ### 最大似然估计
 
-#### 条件对数似然和均方误差
+&emsp;&emsp;**最大似然估计（Maximum Likelihood Estimation，MLE）**是一种最为常见的估计准则，其思想是在已知分布产生的一些样本而未知分布具体参数的情况下，根据样本值推断最有可能产生样本的参数值。将数据的真实分布记为$P_{data(x)}$，为了使⽤$MLE$，需要先假设样本服从某⼀簇有参数确定的分布$P_{model(x;\theta)}$，现在的⽬标就是使⽤估计的$P_{model}$来拟合真实的$P_{data}$(条件一:"模型已定，参数未知")。
+&emsp;&emsp;对于⼀组由$m$个样本组成的数据集$X={x^{(1)},...,x^{(m)}}$，假设数据独⽴且由未知的真实数据分布$P_{data(x)}$⽣成 (条件二：独立同分布采样的数据)，可以通过最⼤似然估计，获取真实分布的参数。
+<center>$\theta _{ML}=\underset{\theta}{arg\ max}P_{model}(X;\theta)=\underset{\theta}{arg\ max}\coprod_{i=1}^{m}P_{model}(x^{(i)};\theta)$</center>
+&emsp;&emsp;通常为了计算⽅便，会对$MLE$加上$log$，将乘积转化为求和然后将求和变为期望：$\theta _{ML}=\underset{\theta}{arg\ max}\sum_{i=1}^{m}logP_{model}(x^{(i)};\theta)$ 。
+
+&emsp;&emsp;使⽤训练数据经验分布$\hat{P}\_{data}$相关的期望进⾏计算：$\theta \_{ML}=\underset{\theta}{arg\ max}\mathbb{E}\_{x\sim \hat{P}\_{data}}logP\_{model}(x;\theta)$。该式是许多监督学习算法的基础假设。
+
+&emsp;&emsp;最⼤似然估计的⼀种解释是使$P_{model}$与$P_{data}$之间的差异性尽可能的⼩，形式化的描述为最⼩化两者的$KL$散度。
+
+&emsp;&emsp;<font color="#ff0000">定义看了半天，看了个寂寞，直接举例推导：</font>
+<img src="/images/mle_example.png" width="500px"></img>
+&emsp;&emsp;一枚硬币抛10次，得到$X$数据为{反，正，正，正，正，反，正，正，正，反}。得到似然函数$f(x_{0};\theta)=(1-\theta)\times\theta\times\theta\times\theta\times\theta\times(1-\theta)\times\theta\times\theta\times\theta\times(1-\theta)=(1-\theta)^{3}\times \theta ^{7}$
+&emsp;&emsp;博客<font color="#ff0000"><sup>[[2][2]]</sup></font>中已经推导解释的非常好，负责将代码实现。
+
+#### 代码实现
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(theta): # f(theta)
+    return (1-theta)**3 * theta**7
+
+X = np.arange(0, 1, 0.001)
+Y = f(X)
+Y = np.array(Y)
+plt.plot(X,Y)
+plt.title("$f(theta) = (1-theta)^3theta^7$")
+plt.show()
+
+# output
+```
+<img src="/images/mle1.png" width="600px"></img>
+
+&emsp;&emsp;可以看出，$\theta=0.7$时，似然函数取得最大值。
+
+&emsp;&emsp;**通俗来讲，是利用已知的样本结果信息，反推最大概率导致这些样本结果出现的模型参考值。**极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的概率为最大，则称为极大似然估计。
 
 #### 最大似然的性质
 
+* 真实分布$p_{data}$必须在模型族$p_{model}(.;\theta)$中。否则，没有估计可以还原$p_{data}$。
+* 真实分布$p_{data}$必须刚好对应一个$\theta$值。否则，最大似然估计恢复出真实分布$p_{data}$后，也不能决定数据生成过程使用哪个$\theta$。
+
 ### 贝叶斯统计
 
+&emsp;&emsp;通过贝叶斯准则来估计参数的后验分布情况，贝叶斯统计（Bayesian Statistics）认为训练数据是确定的，而参数是随机且不唯一的，每个参数都有相应的概率。在观察数据之前，将$\theta$的已知知识表示成先验概率分布$p(\theta)$。如有一组数据样本$\\{x^{(1)},...,x^{(m)}\\}$，通过贝叶斯规则结合数据似然$p(x^{(1)},...,x^{(m)}\mid \theta)$和先验，得到：
+
+<center>$p(\theta \mid x^{(1)},...,x^{(m)})=\frac{p(x^{(1)},...,x^{(m)}\mid \theta )p(\theta)}{p(x^{(1)},...,x^{(m)})}$</center>
+
+&emsp;&emsp;相对于最大似然估计，贝叶斯估计有两个重要区别：第一，不像最大似然方法预测时使用$\theta$的点估计，贝叶斯方法使用$\theta$的全分布。第二，贝叶斯为先验分布，先验通常表现为偏好更简单或更光滑的模型，当训练数据有限时，贝叶斯方法通常泛化得更好，当训练样本数目很大时，通常计算代价很大。
+
+#### 手动推算
+
+#### 代码实现
+
 #### 最大后验估计
+
+&emsp;&emsp;完整的贝叶斯估计需要使用参数的完整分布进行预测，但计算繁重。最大后验估计（Maximum A Posterior，MAP）来选取一个计算可行的单点估计参数作为贝叶斯估计的近似解，公式：
+
+<center>$\theta _{MAP}=\underset{\theta}{arg \ max}\ p(\theta \mid x)=\underset{\theta}{arg \ max}\ log \ p(x\mid \theta)+log\ p(\theta)$</center>
+
+&emsp;&emsp;MAP的估计实际上就是对数似然加上参数的先验分布。实际上，在参数服从⾼斯分布的情况下，上式的右边就对应着L2正则项；在Laplace的情况下，对应着L1的正则项；在均匀分布的情况下则为0，等价于MLE。
 
 ### 监督学习算法
 
@@ -201,3 +319,4 @@ Weight: [array([1.49333333]), array([0.04966667])]
 
 
 [1]:https://www.pianshen.com/article/459993619/
+[2]:https://blog.csdn.net/u011508640/article/details/72815981
