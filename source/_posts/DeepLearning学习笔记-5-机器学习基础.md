@@ -239,7 +239,11 @@ def KFoldCV(D, A, k):
 &emsp;&emsp;<font color="#ff0000">定义看了半天，看了个寂寞，直接举例推导：</font>
 <img src="/images/mle_example.png" width="500px"></img>
 &emsp;&emsp;一枚硬币抛10次，得到$X$数据为{反，正，正，正，正，反，正，正，正，反}。得到似然函数$f(x_{0};\theta)=(1-\theta)\times\theta\times\theta\times\theta\times\theta\times(1-\theta)\times\theta\times\theta\times\theta\times(1-\theta)=(1-\theta)^{3}\times \theta ^{7}$
-&emsp;&emsp;博客<font color="#ff0000"><sup>[[2][2]]</sup></font>中已经推导解释的非常好，负责将代码实现。
+&emsp;&emsp;博客<font color="#ff0000"><sup>[[2][2]][[3][3]]</sup></font>中已经推导解释的非常好，负责将代码实现。
+
+#### 手动推算
+
+<img src="/images/mle_2.png" width="500px"></img>
 
 #### 代码实现
 ```python
@@ -258,7 +262,7 @@ plt.show()
 
 # output
 ```
-<img src="/images/mle1.png" width="600px"></img>
+<img src="/images/mle1.png" width="500px"></img>
 
 &emsp;&emsp;可以看出，$\theta=0.7$时，似然函数取得最大值。
 
@@ -287,7 +291,11 @@ plt.show()
 
 <center>$\theta _{MAP}=\underset{\theta}{arg \ max}\ p(\theta \mid x)=\underset{\theta}{arg \ max}\ log \ p(x\mid \theta)+log\ p(\theta)$</center>
 
-&emsp;&emsp;MAP的估计实际上就是对数似然加上参数的先验分布。实际上，在参数服从⾼斯分布的情况下，上式的右边就对应着L2正则项；在Laplace的情况下，对应着L1的正则项；在均匀分布的情况下则为0，等价于MLE。
+&emsp;&emsp;MAP的估计实际上就是对数似然加上参数的先验分布。实际上，在参数服从⾼斯分布的情况下，上式的右边就对应着L2正则项；在Laplace的情况下，对应着L1的正则项；在均匀分布的情况下则为0，等价于MLE。（太绕了）
+
+&emsp;&emsp;最大似然估计（MLE）是求$\theta$使得似然函数$P(x_{0}\mid \theta)$最大。最大后验概率估计（MAP）是求$\theta$使得函数$P(x_{0}\mid \theta)P(\theta)$最大。$\theta$自己出现的先验概率也最大。
+
+#### 代码实现
 
 ### 监督学习算法
 
@@ -320,3 +328,4 @@ plt.show()
 
 [1]:https://www.pianshen.com/article/459993619/
 [2]:https://blog.csdn.net/u011508640/article/details/72815981
+[3]:https://zhuanlan.zhihu.com/p/46737512
