@@ -17,17 +17,6 @@ tags:
 &emsp;&emsp;花书的理论性很强，在看完相关的理论后，感觉太过于抽象，于是结合实验进一步理解，在搜索了相关的实验例子中，选取了**手写数字图像识别**这一示例进行学习与推导。在总结相关理论之前，先演示手写数字图像识别的完整代码实现过程。
 <!--more-->
 
-### mnist数据集
-
-&emsp;&emsp;mnist<font color="#ff0000"><sup>[[1][1]]</sup></font>是入门级计算机视觉数据集，包含各种手写数字图片，主要用于手写数字识别，数据集每张图片大小为**28*28**像素，标签大小为10的数组，用One-hot编码表示；该数据集包含四个部分：
-
-| 文件 | 数据集 | 类型 | 数量 |
-| --- | --- | --- | --- |
-| <u>[train-images-idx3-ubyte.gz][2]</u> | 训练集 | 图片 | 6w |
-| <u>[train-labels-idx1-ubyte.gz][3]</u> | 训练集 | 标签 | 6w |
-| <u>[t10k-images-idx3-ubyte.gz][4]</u> | 测试集 | 图片 | 1w |
-| <u>[t10k-labels-idx1-ubyte.gz][5]</u> | 测试集 | 标签 | 1w |
-
 ### One-hot编码
 
 &emsp;&emsp;One-hot编码（独热编码）使用N位表示N种状态，任意时候只有一位有效。举例：
@@ -45,17 +34,209 @@ tags:
 * 能处理非连续性的数值特征
 * 在神经网络中，One-hot具有较强的容错性，如神经网络输出结果 [0, 0.1, 0.2, 0.7, 0, 0, 0, 0, 0, 0]，可将最大值变为1，表示为数字3。
 
-### 构建全连接网络
+### mnist数据集
+
+&emsp;&emsp;mnist<font color="#ff0000"><sup>[[1][1]][[2][2]]</sup></font>是入门级计算机视觉数据集，包含各种手写数字图片，主要用于手写数字识别，标签大小为10的数组，用One-hot编码表示；该数据集包含四个部分：
+
+| 文件 | 数据集 | 类型 | 数量 |
+| --- | --- | --- | --- |
+| <u>[train-images-idx3-ubyte.gz][3]</u> | 训练集 | 图片 | 6w数据,55000训练,5000验证 |
+| <u>[train-labels-idx1-ubyte.gz][4]</u> | 训练集 | 标签 | 6w |
+| <u>[t10k-images-idx3-ubyte.gz][5]</u> | 测试集 | 图片 | 1w |
+| <u>[t10k-labels-idx1-ubyte.gz][6]</u> | 测试集 | 标签 | 1w |
+
+&emsp;&emsp;每张数据集每张图片大小为**28*28**像素，可以得到一个28*28维度的向量组成数组，每个向量值介于[0,1]之间。例如在数据集中的第4张图片，坐标为4，label值为[0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]，根据One-hot编码可知数字为：1 。图片1的矩阵表示为：
+<img src="/images/fnn_1.png" width="600px"></img>
+
+#### 代码实现
 
 ```python
-import tensorflow as tf
-from tensorflow.examples.tutorials.mnist import input_data
+import input_data
+mnist = input_data.read_data_sets("../data/mnist/", one_hot=True)
+
+# train dataset size
+print(mnist.train.images.shape)
+# (55000, 784)
+print(mnist.train.labels.shape)
+# (55000, 10)
+
+# validation dataset size
+print(mnist.validation.images.shape)
+# (5000, 784)
+print(mnist.validation.labels.shape)
+# (5000, 10)
+
+# test dataset size
+print(mnist.test.images.shape)
+# (10000, 784)
+print(mnist.test.labels.shape)
+# (10000, 10)
+
+# vector of image 4
+print(mnist.train.images[0, :])
+# output
+[0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.60784316 0.96470594 0.19607845 0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.48235297 0.9960785
+ 0.34117648 0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.3647059  0.9960785  0.70980394 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.3647059  0.9960785  0.6901961  0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.68235296 0.9960785
+ 0.34117648 0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.19215688 0.97647065 0.9215687  0.03529412 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.21568629
+ 0.9960785  0.91372555 0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.5411765  0.9960785  0.91372555
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.6392157  0.9960785  0.91372555 0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.6392157
+ 0.9960785  0.91372555 0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.02352941 0.7686275  0.9960785  0.7568628
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.06666667 0.9960785  0.9960785  0.4901961  0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.16470589 0.9960785
+ 0.9960785  0.20784315 0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.654902   0.9960785  0.7019608  0.01176471
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.9176471  0.9960785  0.63529414 0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.09019608 0.93725497 1.
+ 0.63529414 0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.69411767 0.9960785  0.9960785  0.28235295 0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.10980393 0.8941177
+ 0.9960785  0.73333335 0.00392157 0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.19607845 0.9960785  0.9960785  0.36078432
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.19607845 0.9960785  0.7607844  0.05490196 0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.        ]
+
+# label of image 4
+print(mnist.train.labels[0, :])
+# [0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]
+```
+<img src="/images/fnn_mnist1.png" width="400px"></img>
+
+### 构建全连接网络
+
+#### 手动推算
+
+
+#### 代码实现
+
+```python
+# tensorflow 1.4 python 3.9
+#import tensorflow as tf
+#from tensorflow.examples.tutorials.mnist import input_data
+
+# tensorflow 2.8 python 3.9
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+# https://tensorflow.googlesource.com/tensorflow/+/master/tensorflow/g3doc/tutorials/mnist/input_data.py
+import input_data
 
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_integer("is_train", 1, "train or predict")
 
-# 全连接神经网络
-def full_connected():
+# 单层全连接神经网络
+def one_layer_full_connected():
 
     mnist = input_data.read_data_sets("../data/mnist/", one_hot=True)
 
@@ -145,7 +326,7 @@ def full_connected():
 
 
 if __name__ == "__main__":
-    full_connected()
+    one_layer_full_connected()
 
 # output
 # python3 fnn.py  --is_train=1
@@ -294,8 +475,12 @@ if __name__ == "__main__":
 <img src="/images/fnn_loss.png" width="400px"></img>
 
 
+&emsp;&emsp;程序参考相关深度学习视频教程，由于目前大部分资料都是基于TensorFlow1.x版本进行实验，而相较于TensorFlow2.x版本有很大差异，故在2.x基础上兼容了1.x版本的代码。为提高模型的准确率，后续会在此版本上进行升级，采用卷积神经网络对模型进行优化。
+
+
 [1]:https://doc.codingdict.com/tensorflow/tfdoc/tutorials/mnist_beginners.html
-[2]:https://deeplearner.top/data/mnist/train-images-idx3-ubyte.gz
-[3]:https://deeplearner.top/data/mnist/train-labels-idx1-ubyte.gz
-[4]:https://deeplearner.top/data/mnist/t10k-images-idx3-ubyte.gz
-[5]:https://deeplearner.top/data/mnist/t10k-labels-idx1-ubyte.gz
+[2]:http://yann.lecun.com/exdb/mnist/
+[3]:https://deeplearner.top/data/mnist/train-images-idx3-ubyte.gz
+[4]:https://deeplearner.top/data/mnist/train-labels-idx1-ubyte.gz
+[5]:https://deeplearner.top/data/mnist/t10k-images-idx3-ubyte.gz
+[6]:https://deeplearner.top/data/mnist/t10k-labels-idx1-ubyte.gz
