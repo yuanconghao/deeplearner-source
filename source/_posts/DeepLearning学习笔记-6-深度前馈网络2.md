@@ -75,7 +75,7 @@ $$ReLU(x)=\begin{cases}
 
 #### 代价函数
 
-&emsp;&emsp;大多情况下，使用训练数据和模型预测间的交叉熵作为代价函数。
+&emsp;&emsp;任何能够衡量模型预测值与真实值之间的差异的函数都可以叫做代价函数。当输出神经元的激活函数是线性时(如ReLU函数)，二次代价函数是一种合适的选择；当输出神经元的激活函数是S型函数时(如sigmoid、tanh函数)，选择交叉熵代价函数则比较合理。
 
 #### 输出单元
 
@@ -124,9 +124,27 @@ sigmoid函数写作$g(z)=\sigma (z)=\frac{1}{1+e^{-z}}$，梯度为$g^{\prime}(z
 
 ### 反向传播和其他微分算法
 
+&emsp;&emsp;**前向传播（Forward Propagation）**：前馈神经网络接受输入$x$并产生输出$\hat{y}$时，信息通过网络向前流动，输入$x$提供初始信息，然后传播到每一层的隐藏单元，最终产生输出$\hat{y}$。**反向传播（Back Propagation）**：允许来自代价函数的信息通过网络向后流动，以便计算梯度，是指计算梯度的方法。
+
 #### 计算图
 
+&emsp;&emsp;主要用图语言来描述神经网络。
+
 #### 微积分中的链式法则
+
+&emsp;&emsp;微积分中的链式法则用于计算复合函数的导数。反向传播是一种计算链式法则的算法，使用高效的特定运算顺序。设$x$是实数，$f$和$g$是从实数映射到实数的函数。假设$y=g(x)$，并且$z=f(g(x))=f(y)$。链式法则为：
+
+<center>$\frac{dz}{dx}=\frac{dz}{dy}\frac{dy}{dx}$</center>
+
+&emsp;&emsp;将这种标量进行扩展，假设$x\in \mathbb{R}^{m},y\in \mathbb{R}^{n}$，$g$是从$\mathbb{R}^{m}$到$\mathbb{R}^{n}$的映射，$f$是从$\mathbb{R}^{n}$到$\mathbb{R}$的映射。如果$y=g(x)$，并且$z=f(y)$，那么：
+
+<center>$\frac{\partial z}{\partial x_{i}} =\sum_{j}\frac{\partial z}{\partial y_{j}} \frac{\partial y_{j}}{\partial x_{i}}$</center>
+
+&emsp;&emsp;使用向量法，可以等价的写成
+
+<center>$\nabla_{x}z=\left ( \frac{\partial y}{\partial x}  \right ) ^{\top }\nabla_{y}z$</center>
+
+&emsp;&emsp;$\frac{\partial y}{\partial x}$是$g$的$n\times m$的Jacobian矩阵。
 
 #### 递归地使用链式法则来实现反向传播
 
