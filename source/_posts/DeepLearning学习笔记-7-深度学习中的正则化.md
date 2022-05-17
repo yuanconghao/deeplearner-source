@@ -1,5 +1,5 @@
 ---
-title: DeepLearning学习笔记-7.深度学习中的正则化
+title: DeepLearning学习笔记-7.深度学习中的正则化[未完]
 date: 2022-03-17 01:10:46
 toc: true
 mathjax: true
