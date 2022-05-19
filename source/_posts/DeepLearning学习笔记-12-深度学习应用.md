@@ -2,7 +2,14 @@
 layout: post
 title: DeepLearning学习笔记-12.深度学习应用
 date: 2022-05-17 16:49:26
+toc: true
+mathjax: true
+categories:
+    - 深度学习
+
 tags:
+    - 深度学习笔记
+    - 花书
 ---
 本篇主要介绍深度学习如何来解决计算机视觉（CV）、语音识别、自然语言处理以及其他商业领域中的一些问题。
 
