@@ -113,11 +113,11 @@ deploy:
   branch: master
 
 # search
-search:
-  path: search.xml
-  field: post
-  content: true
-  template: ./search.xml
+#search:
+#  path: search.xml
+#  field: post
+#  content: true
+#  template: ./search.xml
 
 mathjax: true
 mathjax2: true
