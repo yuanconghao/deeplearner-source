@@ -70,7 +70,6 @@ plt.savefig("./matploglib_default.png")
 * 这里有个dpi和分辨率的换算，水平分辨率为$6.4\times 100 = 640$，垂直分辨率为$4.8 \times 100 = 480$ ，图片分辨率为$640 \times 480$。
 * <font color="##ff0000">可通过figure类的参数设置，来改变图片大小、分辨率等。</font>
 * <font color="##ff0000">可调整x轴和y轴的间距与设置描述信息</font>
-* <font color="##ff0000">可调整x轴和y轴的间距与设置描述信息</font>
 
 #### 设置图片大小、分辨率、颜色
 
