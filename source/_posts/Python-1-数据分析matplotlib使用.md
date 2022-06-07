@@ -103,32 +103,335 @@ plt.savefig("./matplotlib_figure.png")
 ```
 <img src="/images/matplotlib/matplotlib_figure.png"></img>
 
-#### 设置描述信息（x、y轴信息）
+* <font color="##ff0000">图片尺寸，水平宽度为5英尺，垂直高度为3英尺；DPI为200，分辨率为$1000 \times 600$ ;</font>
+* <font color="##ff0000">图片背景颜色为蓝色(blue)；边框宽度为1；边框颜色为红色(red)</font>
 
-#### 调整x轴和y轴间距
+#### 设置坐标轴间距与描述信息
+
+```python
+# pyplot import method
+import matplotlib.pyplot as plt
+
+# 创建图形图像（画布）
+'''
+@figure
+figsize    指定画布的大小，(宽度,高度)，单位为英寸。
+dpi        分辨率，每英寸多少个像素
+facecolor  背景颜色
+linewidth  边框宽度
+edgecolor  边框颜色
+frameon    是否显示边框
+'''
+fig = plt.figure(figsize=[4, 2], dpi=100, edgecolor='#ff0000', linewidth=2, frameon=True)
+
+# 坐标轴间距与描述信息
+'''
+@add_axes
+rect       新坐标轴尺寸，四个数值[left, bottom, width, height]，一般介于0-1之间，为分数，代表百分比。
+'''
+ax = fig.add_axes([0.1, 0.1, 1, 1])
+# 设置x轴范围
+ax.set_xlim(0, 30)
+# 设置y轴范围
+ax.set_ylim(0, 30)
+
+# 设置图片标题
+ax.set_title("Line Chart")
+# 设置x轴描述信息
+ax.set_xlabel("x axis")
+# 设置y轴描述信息
+ax.set_ylabel("y axis")
+
+# 准备数据
+x = range(2, 26, 2)
+y = [15, 13, 14.5, 17, 20, 25, 26, 26, 27, 22, 18, 15]
+
+# 绘制图形
+ax.plot(x, y)
+
+# 图片展示
+plt.show()
+
+# 图片保存
+#plt.savefig("./matplotlib_axes.png")
+```
+
+<img src="/images/matplotlib/matplotlib_axes.png"></img>
+
+* <font color="##ff0000">add_axes的rect参数代表显示的百分比部分，可以看到left为从10%开始展示，最后侧边框的红色部分没有展示出来。</font>
 
 #### 设置线条样式
+| 颜色代码 | 含义 |
+| --- | --- |
+| 'b' | 蓝色 |
+| 'g' | 绿色 |
+| 'r' | 红色 |
+| 'c' | 青色 |
+| 'm' | 品红色 |
+| 'y' | 黄色 |
+| 'k' | 黑色 |
+| 'w' | 白色 |
 
-#### 标记特殊的点
+| 线条表示符号 | 含义 |
+| --- | --- |
+| '-' | 实线 |
+| '--' | 虚线 |
+| '-.' | 点划线 |
+| ':' | 虚线 |
+
+| [标记符号][3] | 含义 |
+| --- | --- |
+| '.' | 点 |
+| 'o' | 圆圈 |
+| 'x' | X |
+| 'D' | 钻石 |
+| 'H' | 六角形 |
+| 's' | 正方形 |
+| '+' | 加号 |
+| 'v' | 倒三角 |
+| '^' | 三角 |
+| '<' | 左三角 |
+| '>' | 右三角 |
+
+```python
+# pyplot import method
+import matplotlib.pyplot as plt
+
+# 准备数据
+x = range(2, 26, 2)
+y = [15, 13, 14.5, 17, 20, 25, 26, 26, 27, 22, 18, 15]
+
+# 创建图形图像（画布）
+'''
+@figure
+figsize    指定画布的大小，(宽度,高度)，单位为英寸。
+dpi        分辨率，每英寸多少个像素
+facecolor  背景颜色
+linewidth  边框宽度
+edgecolor  边框颜色
+frameon    是否显示边框
+'''
+fig = plt.figure(figsize=[4, 2], dpi=100, edgecolor='#ff0000', linewidth=2, frameon=True)
+
+# 坐标轴间距与描述信息
+'''
+@add_axes
+rect       新坐标轴尺寸，四个数值[left, bottom, width, height]，一般介于0-1之间，为分数，代表百分比。
+'''
+ax = fig.add_axes([0, 0, 1, 1])
+# 设置x轴范围
+ax.set_xlim(0, 30)
+# 设置y轴范围
+ax.set_ylim(0, 30)
+
+# 设置图片标题
+ax.set_title("Line Chart")
+# 设置x轴描述信息
+ax.set_xlabel("x axis")
+# 设置y轴描述信息
+ax.set_ylabel("y axis")
+
+# 设置线条样式
+ax.plot(x, y, 'go--')
+# 绘制图例
+'''
+@legend
+handles     所有线型实例，序列
+labels      标签名称，字符串序列
+loc         图例位置：
+(Best/0/自适用；upper right/1/右上；upper left/2/左上；lower left/3/左下；lower right/4/右下；)
+(right/5/右侧；center left/6/居中靠左；center right/7/居中靠右；lower center/8/底部居中；upper center/9/上部居中；center/10/中部；)
+'''
+ax.legend(labels=('GDP'), loc='lower right')
+
+# 图片展示
+plt.show()
+
+# 图片保存
+#plt.savefig("./matplotlib_axes1.png")
+```
+<img src="/images/matplotlib/matplotlib_axes1.png"></img>
 
 #### 设置显示中文
 
-#### 设置图形信息
+&emsp;&emsp;环境用的是mac，anaconda，首先要查看环境支持那些中文字体；
+```
+conda install fontconfig
+fc-list :lang=zh
+```
+
+```python
+# pyplot import method
+import matplotlib.pyplot as plt
+
+# 设置字体
+plt.rcParams["font.sans-serif"]=["Arial Black"]
+# 该语句解决图像中的“-”负号的乱码问题
+plt.rcParams["axes.unicode_minus"]=False
+
+
+# 准备数据
+x = range(2, 26, 2)
+y = [15, 13, 14.5, 17, 20, 25, 26, 26, 27, 22, 18, 15]
+
+# 创建图形图像（画布）
+'''
+@figure
+figsize    指定画布的大小，(宽度,高度)，单位为英寸。
+dpi        分辨率，每英寸多少个像素
+facecolor  背景颜色
+linewidth  边框宽度
+edgecolor  边框颜色
+frameon    是否显示边框
+'''
+fig = plt.figure(figsize=[4, 2], dpi=100, edgecolor='#ff0000', linewidth=2, frameon=True)
+
+# 坐标轴间距与描述信息
+'''
+@add_axes
+rect       新坐标轴尺寸，四个数值[left, bottom, width, height]，一般介于0-1之间，为分数，代表百分比。
+'''
+ax = fig.add_axes([0, 0, 1, 1])
+# 设置x轴范围
+ax.set_xlim(0, 30)
+# 设置y轴范围
+ax.set_ylim(0, 30)
+
+# 设置图片标题
+ax.set_title("折线图")
+# 设置x轴描述信息
+ax.set_xlabel("x轴")
+# 设置y轴描述信息
+ax.set_ylabel("y轴")
+
+# 设置线条样式
+ax.plot(x, y, 'go--')
+# 绘制图例
+'''
+@legend
+handles     所有线型实例，序列
+labels      标签名称，字符串序列
+loc         图例位置：
+(Best/0/自适用；upper right/1/右上；upper left/2/左上；lower left/3/左下；lower right/4/右下；)
+(right/5/右侧；center left/6/居中靠左；center right/7/居中靠右；lower center/8/底部居中；upper center/9/上部居中；center/10/中部；)
+'''
+ax.legend(labels=('GDP'), loc='lower right')
+
+# 图片展示
+plt.show()
+
+# 图片保存
+#plt.savefig("./matplotlib_zh.png")
+
+```
+
+<img src="/images/matplotlib/matplotlib_zh.png"></img>
+
 
 ### matplotlib折线图
 
+```python
+import matplotlib.pyplot as plt
+
+# 对比两天内同一时刻温度的变化情况
+x = [5, 8, 12, 14, 16, 18, 20]
+y1 = [18, 21, 29, 31, 26, 24, 20]
+y2 = [15, 18, 24, 30, 31, 25, 24]
+
+#绘制折线图，添加数据点，设置点的大小
+plt.plot(x, y1, 'c',marker='o', markersize=5)
+plt.plot(x, y2, 'g', marker='o',markersize=5)
+
+# 折线图标题
+plt.title('Line Chart Of Temperature Change')  
+# x轴标题
+plt.xlabel('Time(h)')  
+# y轴标题
+plt.ylabel('Temperature(C)')  
+
+#给图像添加注释，并设置样式
+for a, b in zip(x, y1):
+    plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+for a, b in zip(x, y2):
+    plt.text(a, b, b, ha='center', va='bottom', fontsize=10)
+
+#绘制图例
+plt.legend(['First Day', 'Second Day'])
+
+#显示图像
+plt.show()
+```
+<img src="/images/matplotlib/matplotlib_line.png"></img>
+
 ### matplotlib散点图
+
+```python
+import matplotlib.pyplot as plt
+
+# 准备数据
+girls_grades = [89, 90, 70, 89, 100, 80, 90, 100, 80, 34]
+boys_grades = [30, 29, 49, 48, 100, 48, 38, 45, 20, 30]
+grades_range = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+# 创建画布
+fig=plt.figure()
+
+#添加绘图区域
+ax=fig.add_axes([0, 0, 1, 1])
+
+ax.scatter(grades_range, girls_grades, color='g', label="girls")
+ax.scatter(grades_range, boys_grades, color='r', label="boys")
+
+# 设置标题
+ax.set_title('scatter plot')
+# 设置x轴标签
+ax.set_xlabel('Grades Range')
+# 设置y轴标签
+ax.set_ylabel('Grades Scored')
+
+# 添加图例
+plt.legend()
+
+# 展示图像
+plt.show()
+```
+<img src="/images/matplotlib/matplotlib_scatter.png"></img>
 
 ### matplotlib条形图
 
 ### matplotlib多次条形图
 
 ### matplotlib直方图
+```python
+from matplotlib import pyplot as plt
+import numpy as np
 
+#创建图形对象和轴域对象
+fig,ax = plt.subplots(1,1)
 
+# 准备数据
+a = np.array([22,87,5,43,56,73,55,54,11,20,51,5,79,31,27])
+
+# 绘制直方图
+ax.hist(a, bins = [0,25,50,75,100])
+
+# 设置标题
+# 数学表达式，放到$$内
+ax.set_title("histogram of result " + r'$\alpha > \beta$')
+
+# 设置坐标轴
+ax.set_xticks([0,25,50,75,100])
+
+# 设置标签
+ax.set_xlabel('marks')
+ax.set_ylabel('no.of students')
+plt.show()
+```
+<img src="/images/matplotlib/matplotlib_hist.png"></img>
 
 
 [1]:https://matplotlib.org/
 [2]:https://matplotlib.org/stable/api/figure_api.html
+[3]:https://matplotlib.org/stable/api/_as_gen/matplotlib.markers.MarkerStyle.html#matplotlib.markers.MarkerStyle
 
 
