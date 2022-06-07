@@ -100,9 +100,6 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
-  - page : history
-    directory: timeline/
-    icon: fa-book
   - page: about
     directory: about/
     icon: fa-user
