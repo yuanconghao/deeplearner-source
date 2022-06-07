@@ -100,6 +100,9 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
+  - page : history
+    directory: timeline/
+    icon: fa-book
   - page: about
     directory: about/
     icon: fa-user
@@ -118,11 +121,6 @@ links:
   - title: Fern[Old]
     url: http://www.ferdbi.com
 
-timeline:
-  - num: 1
-    word: 2021/11/27-搭建博客,开启学习之路
-  - num: 2
-    word: 2014/11/28-深度学习[花书]学习
 
 # Static files
 js: js
