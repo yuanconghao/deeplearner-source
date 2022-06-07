@@ -12,7 +12,7 @@ tags:
     - numpy
 ---
 
-numpy数据分析基本使用
+[Numpy][1]（Numerical Python）官方定义：The fundamental package for scientific computing with Python. 
 <!--more-->
 
 ### numpy数组
@@ -27,3 +27,5 @@ numpy数据分析基本使用
 
 ### numpy常用统计方法
 
+
+[1]:https://numpy.org/
