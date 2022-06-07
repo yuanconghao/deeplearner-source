@@ -397,9 +397,49 @@ plt.show()
 ```
 <img src="/images/matplotlib/matplotlib_scatter.png"></img>
 
-### matplotlib条形图
+### matplotlib柱状图
+```python
+import matplotlib.pyplot as plt
 
-### matplotlib多次条形图
+# 创建图形对象
+fig = plt.figure()
+
+# 添加子图区域，参数值表示[left, bottom, width, height ]
+ax = fig.add_axes([0, 0, 1, 1])
+
+# 准备数据
+langs = ['C', 'C++', 'Java', 'Python', 'PHP']
+students = [23,17,35,29,12]
+
+# 绘制柱状图
+ax.bar(langs,students)
+plt.show()
+```
+<img src="/images/matplotlib/matplotlib_bar.png"></img>
+
+### matplotlib多次柱状图
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 准备数据
+data = [[30, 25, 50, 20], [40, 23, 51, 17], [35, 22, 45, 19]]
+X = np.arange(4)
+
+# 创建画布
+fig = plt.figure()
+
+# 添加子图区域
+ax = fig.add_axes([0, 0, 1, 1])
+
+# 绘制柱状图
+ax.bar(X + 0.00, data[0], color = 'b', width = 0.25)
+ax.bar(X + 0.25, data[1], color = 'g', width = 0.25)
+ax.bar(X + 0.50, data[2], color = 'r', width = 0.25)
+```
+
+<img src="/images/matplotlib/matplotlib_multi_bar.png"></img>
 
 ### matplotlib直方图
 ```python
@@ -429,6 +469,28 @@ plt.show()
 ```
 <img src="/images/matplotlib/matplotlib_hist.png"></img>
 
+
+### matplotlib饼图
+```python
+from matplotlib import pyplot as plt
+import numpy as np
+
+# 准备数据
+langs = ['C', 'C++', 'Java', 'Python', 'PHP']
+students = [23,17,35,29,12]
+
+# 添加图形对象
+fig = plt.figure()
+ax = fig.add_axes([0,0,1,1])
+
+# 使得X/Y轴的间距相等
+ax.axis('equal')
+
+#绘制饼状图
+ax.pie(students, labels = langs,autopct='%1.2f%%')
+plt.show()
+```
+<img src="/images/matplotlib/matplotlib_pie.png"></img>
 
 [1]:https://matplotlib.org/
 [2]:https://matplotlib.org/stable/api/figure_api.html
