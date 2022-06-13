@@ -27,15 +27,17 @@ Numpy是python的科学计算库，在矩阵乘法与数组性状处理上，Num
 
 | [数据类型][3] | 描述 |
 | --- | --- |
-| bool_ | 布尔型数据类型（True 或者 False）|
-| int_ | 默认整数类型，类似于C语言中的long，取值为int32或int64 |
-| int8/int16/int32/int64 | 代表1个字节/2个字节/4个字节/8个字节的整数 |
-| uint8/uint16/uint32/uint64 | 代表1个字节/2个字节/4个字节/8个字节的无符号整数 |
+| bool_ | 布尔型(True/False)|
+| int_ | default, int32或int64 |
+| int8/int16 | 1/2个字节的整数 |
+| int32/int64 | 4/8个字节的整数 |
+| uint8/uint16 | 1/2个字节的无符号整数 |
+| uint32/uint64 | 4/8个字节的无符号整数 |
 | float_ | float64 类型的简写 |
-| float16 | 半精度浮点数，包括：1 个符号位，5 个指数位，10个尾数位 |
-| float32 | 单精度浮点数，包括：1 个符号位，8 个指数位，23个尾数位 |
-| float64 | 双精度浮点数，包括：1 个符号位，11 个指数位，52个尾数位 |
-| complex_ | 复数类型，与complex128类型相同 |
+| float16 | 半精度浮点数|
+| float32 | 单精度浮点数|
+| float64 | 双精度浮点数
+| complex_ | 复数类型，同cpmplex128|
 | complex64 | 表示实部和虚部共享32位的复数 |
 | complex128 | 表示实部和虚部共享64位的复数 |
 | str_/string_ | 表示字符串类型 |
@@ -958,9 +960,70 @@ numpy.matlib.identity()
 numpy.matlib.rand()
 ```
 
+```python
+# import numpy package
+import numpy as np
+import numpy.matlib as matlib
+
+# 矩阵填充无意义的随机值
+a = matlib.empty((2, 2))
+
+# 以0填充的矩阵
+b = matlib.zeros((2, 2))
+
+# 以1填充的矩阵
+c = matlib.ones((2, 2))
+
+# 对角线元素为1，其他元素为0
+d = matlib.eye(2, 3)
+
+# 单位矩阵
+e = matlib.identity(3)
+
+# 以随机数填充，并给定维度的矩阵
+f = matlib.rand(2, 3)
+
+print("-----------------")
+print(a)
+print("-----------------")
+print(b)
+print("-----------------")
+print(c)
+print("-----------------")
+print(d)
+print("-----------------")
+print(e)
+print("-----------------")
+print(f)
+
+# output
+'''
+-----------------
+[[1. 1.]
+ [1. 1.]]
+-----------------
+[[0. 0.]
+ [0. 0.]]
+-----------------
+[[1. 1.]
+ [1. 1.]]
+-----------------
+[[1. 0. 0.]
+ [0. 1. 0.]]
+-----------------
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+-----------------
+[[0.87508724 0.65697835 0.21469575]
+ [0.9769739  0.68388567 0.18631645]]
+'''
+```
+
 #### 线性代数
 
 &emsp;&emsp;Numpy提供了numpy.linalg模块，包含了一些常用的线性代数计算方法。
+
 | 函数 | 说明 |
 | --- | --- |
 | dot | 两个数组的点积 |
@@ -971,8 +1034,70 @@ numpy.matlib.rand()
 | solve | 求解线性矩阵方程 |
 | inv | 计算矩阵的逆矩阵，逆矩阵与原始矩阵相乘，会得到单位矩阵 |
 
+```python
+# import numpy package
+import numpy as np
+
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+# 一维数组点积，1*4 + 2*5 + 3*6
+dot1 = np.dot(a, b)
+
+# 二维数组点积(矩阵相乘)
+# 1*5+2*7=19   1*6+2*8=22
+c = np.array([[1, 2], 
+              [3, 4]])
+d = np.array([[5, 6], 
+              [7, 8]])
+dot2 = np.dot(c, d)
+
+# 两个向量的点积
+# 1*5 + 2*6 + 3*7 + 4*8
+vdot = np.vdot(c, d)
+
+# 两个数组的内积，与dot不同，dot为列相乘相加，vdot为行相乘相加
+inner = np.inner(c, d)
+
+# 同dot二维运算
+matmul = np.matmul(c, d)
+
+print("------------")
+print(dot1)
+print("------------")
+print(dot2)
+print("------------")
+print(vdot)
+print("------------")
+print(inner)
+print("------------")
+print(matmul)
+
+# output
+'''
+------------
+32
+------------
+[[19 22]
+ [43 50]]
+------------
+70
+------------
+[[17 23]
+ [39 53]]
+------------
+[[19 22]
+ [43 50]]
+'''
+```
 
 #### 矩阵乘法
+
+&emsp;&emsp;关于numpy中dot、multiply、matmul的区别，参考该[文章][4]。
+
+* 当数组a和b都是一维或二维的，dot和matmul运算为矩阵乘法，得到结果相同。
+* 当a和b中，有一个为标量，dot(a, b)等同于multiply(a, b)或a*b
 
 ##### 逐元素矩阵乘法
 
@@ -1001,6 +1126,7 @@ numpy.matlib.rand()
 ### Numpy输入输出(IO)
 
 &emsp;&emsp;Numpy从磁盘的文件中加载ndarray对象，可处理二进制文件和普通文本文件。IO操作方法如下：
+
 | 文件类型 | 处理方法 |
 | --- | --- |
 | 二进制文件 | load()和save() |
@@ -1010,3 +1136,4 @@ numpy.matlib.rand()
 [1]:https://numpy.org/
 [2]:https://www.numpy.org.cn/user/basics/types.html#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2
 [3]:https://www.numpy.org.cn/user/basics/types.html#%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2
+[4]:https://www.jianshu.com/p/42b0b6ffcf97
