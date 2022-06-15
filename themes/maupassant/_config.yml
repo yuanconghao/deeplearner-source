@@ -100,7 +100,7 @@ menu:
   - page: archive
     directory: archives/
     icon: fa-archive
-  - page: history
+  - page: timeline
     directory: timeline/
     icon: fa-book
   - page: about
