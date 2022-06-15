@@ -19,7 +19,7 @@
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^2.0.0",
     "hexo-generator-tag": "^1.0.0",
-    "hexo-markmap": "^1.0.8",
+    "hexo-markmap": "^1.1.2",
     "hexo-pdf": "^1.1.1",
     "hexo-prism-plus": "^2.1.6",
     "hexo-renderer-ejs": "^2.0.0",
