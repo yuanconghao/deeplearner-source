@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AI基础方法
-date: 2021-11-30 11:40:46
+date: 2021-12-01 11:40:46
 tags:
     - AI
     - 人工智能
@@ -232,6 +232,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;i. 论文：https://openreview.net/forum?id=MtEE0CktZht
     &emsp;&emsp;ii. 代码：https://github.com/daochenzha/rapid
     c. 2020年8月，首家强化学习大规模落地工业应用，快手是如何做到的？https://mp.weixin.qq.com/s/F6mGZaE4Du2igFq2VFeU8A
+    &emsp;&emsp;&emsp;&emsp;i. <img src="/images/ai/algrithm_diff.png" width="400"></img>
 
 9. Facebook
     a. 2021年10月，强化学习从未如此方便！Facebook发布沙盒MiniHack，内置史上最难游戏。https://mp.weixin.qq.com/s/WS1YusQzcOhW-RkHDZFMzA
@@ -290,16 +291,16 @@ AI基础方法调研。转自刘**整理资料。
 16. 综合性及其他
     a. 2021年11月，它让DeepMind、Meta等巨头深陷其中：一文回顾2021年强化学习历程。https://mp.weixin.qq.com/s/49zepV0ySGHuZ6Bm0eZbZQ
     &emsp;&emsp;i. https://analyticsindiamag.com/what-happened-in-reinforcement-learning-in-2021/
-    &emsp;&emsp;ii. 
+    &emsp;&emsp;ii. <img src="/images/ai/reinforcement_learning.png" width="400"></img>
     b. 2021年11月，深度强化学习探索算法最新综述，近200篇文献揭示挑战和未来方向。https://mp.weixin.qq.com/s/_-WSoeOqXMhR7S0PtyYixQ
     &emsp;&emsp;i. https://arxiv.org/pdf/2109.06668.pdf
-    &emsp;&emsp;ii. 
+    &emsp;&emsp;ii. <img src="/images/ai/reinforce_sumary.png" width="400"></img>
     c. 2021年8月，公开反驳！数据科学家直指DeepMind，“强化学习无法实现通用人工智能”。https://mp.weixin.qq.com/s/bi0sUBfyZ1YS7IpEyMjbNg
     d. 2021年6月，实现AGI，强化学习就够了？Sutton、Silver师徒联手：奖励机制足够实现各种目标。https://mp.weixin.qq.com/s/XTNyLjZ9KfdtHY4Omb9_4w
     &emsp;&emsp;i. 《Reward is enough》：https://www.sciencedirect.com/science/article/pii/S0004370221000862
     e. 2020年12月，一文看尽系列：分层强化学习(HRL)经典论文全面总结。https://mp.weixin.qq.com/s/Uc1Qsh3BG1PEe4roVqpkYQ
     f. 2019年10月，八千字长文深度解读，迁移学习在强化学习中的应用及最新进展。https://mp.weixin.qq.com/s/Rj55EoopzlR71DZ5XrvH_w
-    &emsp;&emsp;i. 
+    &emsp;&emsp;i. <img src="/images/ai/reinforce_future.png" width="400"></img>
     g. 2019年6月，论文Modern Deep Reinforcement Learning Algorithms，作者：Sergey Ivanov,Alexander D'yakonov
     &emsp;&emsp;i. 链接：https://arxiv.org/pdf/1906.10025v1
     h. 2018年10月，综述文章《深度强化学习》，Deep Reinforcement Learning，论文地址：https://arxiv.org/abs/1810.06339
@@ -390,7 +391,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;i. A Survey on Deep Transfer Learning，论文地址：https://arxiv.org/pdf/1808.01974v1.pdf
 
 2. 迁移学习——Fine-tune。https://blog.csdn.net/u013841196/article/details/80919857
-    a. 
+    a. <img src="/images/ai/transfer_learning.png" width="400"></img>
 
 3. 2020年5月，仅需少量视频观看数据，即可精准推断用户习惯：腾讯、谷歌、中科大团队提出迁移学习架构PeterRec。https://mp.weixin.qq.com/s/PmVhAthYxiUspWic5Klpog
     a. https://arxiv.org/pdf/2001.04253.pdf
@@ -479,10 +480,10 @@ AI基础方法调研。转自刘**整理资料。
 
     h. 综合及其他：
     &emsp;&emsp;i. 2021年9月，清华唐杰团队：一文看懂NLP预训练模型前世今生。https://mp.weixin.qq.com/s/KfTP4saj6M2HDMso2eArxg
-    &emsp;&emsp;&emsp;&emsp;1. 
+    &emsp;&emsp;&emsp;&emsp;1. <img src="/images/ai/nlp_pre_transfer_learning.png" width="400"></img>
     &emsp;&emsp;ii. 2020年9月，周明：预训练模型在多语言、多模态任务的进展。https://mp.weixin.qq.com/s/RKA_RxTQkIeJX3_VIKJiRQ
     &emsp;&emsp;iii. 2020年5月，万字长文带你纵览 BERT 家族。https://mp.weixin.qq.com/s/uvyBnaFB21kqpeCc8u3kvQ
-    &emsp;&emsp;&emsp;&emsp;1. 
+    &emsp;&emsp;&emsp;&emsp;1. <img src="/images/ai/bert_family.png" width="400"></img>
     &emsp;&emsp;iv. 2019年12月，BERT模型超酷炫，上手又太难？请查收这份BERT快速入门指南！https://mp.weixin.qq.com/s/jVSW0KDhaXuaIeOzoPmCJA
     &emsp;&emsp;v. 2019年10月，一款超小型、基于BERT的中文预训练模型ALBERT_TINY。参数大小1.8M，模型大小16M，仅为BERT的1/25，训练和推理预测速度提升近10倍。https://mp.weixin.qq.com/s/eVlNpejrxdE4ctDTBM-fiA
     &emsp;&emsp;&emsp;&emsp;1. https://github.com/brightmart/albert_zh
@@ -497,6 +498,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;i. 2021年9月，不用1750亿！OpenAI CEO放话：GPT-4参数量不增反减。https://mp.weixin.qq.com/s/-qDwwuwyToN1qIr0p1dZqA
     &emsp;&emsp;ii. 2021年7月，GPT-4参数将达10兆！这个表格预测全新语言模型参数将是GPT-3的57倍。https://mp.weixin.qq.com/s/NcElG6H_8C0sONDBuOe3kA
     &emsp;&emsp;&emsp;&emsp;1. GPT-4将会有高达10兆个参数？近日，有网友在分析了GPT-3和其他语言模型之后大胆预测，GPT-4将会达到GPT-3的57倍！而「开源版本」则会达到和GPT-3同等的规模。
+    &emsp;&emsp;&emsp;&emsp;2. <img src="/images/ai/gpt_diff.png" width="400"></img>
     b. GPT-f：用于数学问题的 GPT-f，利用基于 Transformer 语言模型的生成能力进行自动定理证明
     &emsp;&emsp;i. 2020年9月，GPT自动证明数学题，结果被专业数据库收录，数学家点赞。https://mp.weixin.qq.com/s/E7yhnCsVYRYx9QMkUX17-g
     c. GPT-3（1750亿参数）：https://github.com/openai/gpt-3，https://arxiv.org/abs/2005.14165
@@ -592,7 +594,7 @@ AI基础方法调研。转自刘**整理资料。
 
 22. 孟子：
     a. 2021年7月，四两拨千斤！AI大牛周明率澜舟团队刷新CLUE新纪录，轻量化模型孟子一鸣惊人。https://mp.weixin.qq.com/s/b9HL6kWTCnQ17JrRFYke3Q
-    &emsp;&emsp;i. 
+    &emsp;&emsp;i. <img src="/images/ai/clue_diff.png" width="400"></img>
 
 23. 源：
     a. 源1.0（2457亿参数）
@@ -611,7 +613,7 @@ AI基础方法调研。转自刘**整理资料。
     a. 2019年11月，2019最佳预训练模型：非暴力美学，1/4算力超越RoBERTa。https://mp.weixin.qq.com/s/_R-Bp5lLov-QIoPRl6fFMA
     &emsp;&emsp;i. 论文：《ELECTRA: PRE-TRAINING TEXT ENCODERS AS DISCRIMINATORS RATHER THAN GENERATORS》
     &emsp;&emsp;ii. 论文链接：https://openreview.net/pdf?id=r1xMH1BtvB
-    &emsp;&emsp;iii. 
+    &emsp;&emsp;iii. <img src="/images/ai/electra_large_result.png" width="400"></img>
 
 27. NEZHA（哪吒）
     a. 2019年12月，华为开源预训练语言模型「哪吒」：编码、掩码升级，提升多项中文 NLP 任务性能！https://mp.weixin.qq.com/s/m8FMHrguehfDDSTHZb-Ufw
@@ -645,6 +647,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;ii. https://venturebeat.com/2021/02/01/facebook-researchers-propose-pre-fine-tuning-to-improve-language-model-performance/
     d. 2020年6月，从BERT、XLNet到MPNet，细看NLP预训练模型发展变迁史。https://mp.weixin.qq.com/s/DJdhJ4r7HZCVTzJZjM-TDA
     e. 2020年5月，NLP领域预训练模型的发展。https://blog.tensorflow.org/2020/05/how-hugging-face-achieved-2x-performance-boost-question-answering.html
+    &emsp;&emsp;i. <img src="/images/ai/nlp_model_develop.png" width="400"></img>
     f. 2019年12月，预训练是AI未来所需要的全部吗？https://mp.weixin.qq.com/s/RCxUhcqLHM1XODRsZQSehg
     g. 2019年12月，深度迁移学习在 NLP 中的应用：选 BERT 还是被评逆天的 GPT 2.0？https://mp.weixin.qq.com/s/6WIEItSuI7-dG4if-hL0Yg
     h. 2019年10月，预训练语言模型关系图+必读论文列表。https://mp.weixin.qq.com/s/-U_Lu2MMr5QRNe1xpv-_Xg
@@ -1035,7 +1038,7 @@ AI基础方法调研。转自刘**整理资料。
 
 2. 阿里：
     a. 2020年6月，想了解蚂蚁共享智能？看这篇文章就够了。https://mp.weixin.qq.com/s/WIrODusMyCxgrfcZBv6LJw
-    &emsp;&emsp;i. 
+    &emsp;&emsp;i. <img src="/images/ai/mpc_share_intelligence.png" width="400"></img>
 
 3. 字节跳动：
     a. 2020年10月，字节跳动破局联邦学习：开源Fedlearner框架，广告投放增效209%。https://mp.weixin.qq.com/s/MHUpJT1jr71Rt93BhPCvvg
@@ -1074,7 +1077,7 @@ AI基础方法调研。转自刘**整理资料。
 #### 12.1 弱监督学习
 
 1. 从聊胜于无到可堪大用，半监督学习革命悄悄来临。https://mp.weixin.qq.com/s/qmlSO5Q2r0lnNDXnkF4buQ
-    a. 
+    a. <img src="/images/ai/week_supervised_learning.png" width="400"></img>
     b. A Holistic Approach to Semi-Supervised Learning：https://arxiv.org/abs/1905.02249 
     c. Unsupervised Data Augmentation：https://arxiv.org/abs/1904.12848
 
@@ -1311,10 +1314,11 @@ AI基础方法调研。转自刘**整理资料。
 
 2. 2020年4月，清华唐杰教授深度报告：人工智能的下个十年！https://mp.weixin.qq.com/s/HyM5veDf0RH8xM1Qpt9Uvw
     a. 唐老师从人工智能发展的历史开始，深入分析人工智能近十年的发展，阐述了人工智能在感知方面取得的重要成果，尤其提到算法是这个感知时代最重要、最具代表性的内容，重点讲解了 BERT、ALBERT、MoCo2 等取得快速进展的算法。最后说到下一波人工智能浪潮的兴起，就是实现具有推理、可解释性、认知的人工智能。
-    b. 
+    b. <img src="/images/ai/dual_process_theory.png" width="400"></img>
+    c. <img src="/images/ai/cognition_diff.png" width="400"></img>
 
 3. 2020年1月，AI的下一个战场：认知智能的突围。https://mp.weixin.qq.com/s/D6hl_U8xuKQkMj5vdLQwSQ
-    a. 
+    a. <img src="/images/ai/ai_history.png" width="400"></img>
     b. 对人工智能发展的三个阶段进行剖析：1.计算智能；2.感知智能；3.认知智能。显然，2019年是在第二阶段渡过的，在2019年，我们进一步研究语音识别，计算机人脸的识别，以及想方设法让计算机加强语言文字处理能力。但是，对于第三阶段，让人工智能真正的进行理解，进行思考，进行推理还尚未触及到门槛。
 
 4. 长文解读人工智能、机器学习和认知计算：http://36kr.com/p/5078536.html，https://www.ibm.com/developerworks/library/cc-beginner-guide-machine-learning-ai-cognitive/index.html
@@ -1358,7 +1362,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;&emsp;&emsp;（2）如何定义知识？
     &emsp;&emsp;&emsp;&emsp;（3）如何抽取和表示与输入相关的知识？
     &emsp;&emsp;&emsp;&emsp;（4）基于对输入及其相关知识的理解，如何推断出输入对应的输出？
-    &emsp;&emsp;&emsp;&emsp;（5）
+    &emsp;&emsp;&emsp;&emsp;（5）<img src="/images/ai/machine_reasoning.png" width="400"></img>
 
 ### 17 经典机器学习
 
@@ -1370,7 +1374,7 @@ AI基础方法调研。转自刘**整理资料。
 2. 周志华：Boosting学习理论的探索 —— 一个跨越30年的故事。https://mp.weixin.qq.com/s/7Ah4w9Qte44MhoE66rFm9w
 
 3. 一张地图带你玩转机器学习。https://mp.weixin.qq.com/s/okl2LiNLRLtp6AKH9cUnmQ
-    a.
+    a. <img src="/images/ai/ensemble_learning.png" width="400"></img>
 
 4. 2020年9月，当支持向量机遇上神经网络：这项研究揭示了SVM、GAN、Wasserstein距离之间的关系。https://mp.weixin.qq.com/s/QW3az1gjQ7IjhGtxByDs6Q
 
@@ -1430,7 +1434,7 @@ AI基础方法调研。转自刘**整理资料。
     &emsp;&emsp;i. https://arxiv.org/pdf/2011.01929.pdf
 
 5. 2021年9月，深度学习也有武林大会！八大科技巨头：我的「流派」才能实现AGI。https://mp.weixin.qq.com/s/uwE3PbYfg0zFO23Tr8152Q
-    a. 
+    a. <img src="/images/ai/dl_schools.png" width="400"></img>
 
 6. 2021年7月，50年最重要，8大统计学发展！哥大教授论文列举推动AI革命的统计学思想。https://mp.weixin.qq.com/s/EY5eUIrXmi18D1bDis6W9A
     a. https://www.tandfonline.com/doi/full/10.1080/01621459.2021.1938081，作者将这些统计学思想归类为8大类别：
