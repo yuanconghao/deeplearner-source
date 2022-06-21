@@ -2,7 +2,6 @@
 layout: post
 title: AI学习基础结构
 date: 2021-11-30 11:40:46
-toc: true
 tags:
     - AI
     - 人工智能
@@ -46,15 +45,15 @@ AI的学习基础资料相关，方便后续学习查阅。
 
 1. MIT：
     a. 关于是不是所有的函数都能够用一个足够大的神经网络去逼近？CSAIL的两位研究人员从ResNet结构入手，论证了这个问题。他们发现，**在每个隐藏层中只有一个神经元的ResNet，就是一个通用逼近函数**，无论整个网络的深度有多少，哪怕趋于无穷大，这一点都成立。
-        i. https://arxiv.org/pdf/1806.10909.pdf，https://arxiv.org/abs/1709.02540?context=cs
-        ii. https://mp.weixin.qq.com/s/xTJr-jWMjk73TCZ8gBT4Ww
+    &emsp;&emsp;i. https://arxiv.org/pdf/1806.10909.pdf，https://arxiv.org/abs/1709.02540?context=cs
+    &emsp;&emsp;ii. https://mp.weixin.qq.com/s/xTJr-jWMjk73TCZ8gBT4Ww
 2. 清华：
     a. 2021年6月，ResNet也能用在3D模型上了，清华「计图」团队新研究已开源。https://mp.weixin.qq.com/s/FHPN81LZrGxGRX_5ni3PfQ
-        i. 论文地址：https://arxiv.org/abs/2106.02285
-        ii. 项目地址：https://github.com/lzhengning/SubdivNet
+    &emsp;&emsp;i. 论文地址：https://arxiv.org/abs/2106.02285
+    &emsp;&emsp;ii. 项目地址：https://github.com/lzhengning/SubdivNet
 3. 综合及其他
     a. 2020年1月，对ResNet本质的一些思考。https://mp.weixin.qq.com/s/c55Kam2UI-cvvO3_GkDMEw
-        i. https://zhuanlan.zhihu.com/p/60668529
+    &emsp;&emsp;i. https://zhuanlan.zhihu.com/p/60668529
 
 ### 胶囊网络（Capsules）
 
@@ -85,8 +84,8 @@ AI的学习基础资料相关，方便后续学习查阅。
 
 1. 论文：
     a. Vicarious
-        i. 在 Science的paper：A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs.pdf
-2. 【Science】超越深度学习300倍， Vicarious发布生成视觉模型，LeCun批“这就是AI炒作的教科书”：https://yq.aliyun.com/articles/229127
+    &emsp;&emsp;i. 在 Science的paper：A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs.pdf
+1. 【Science】超越深度学习300倍， Vicarious发布生成视觉模型，LeCun批“这就是AI炒作的教科书”：https://yq.aliyun.com/articles/229127
 
 ### 图神经网络（GNN）
 
@@ -99,22 +98,22 @@ AI的学习基础资料相关，方便后续学习查阅。
 3. 斯坦福大学：
     a. 2020年10月，什么是优秀的图表示？斯坦福提出首个信息论原则——图信息瓶颈。https://mp.weixin.qq.com/s/4-VmdrbvZPoF1CpXaDG4Eg
     b. 2019年5月，斯坦福教授ICLR演讲：图网络最新进展GraphRNN和GCPN。https://mp.weixin.qq.com/s/wdDDluSeqUTEgjKHd6rBYg
-        i. graph_gen-iclr-may19-long.pdf，gin-iclr19.pdf
+    &emsp;&emsp;i. graph_gen-iclr-may19-long.pdf，gin-iclr19.pdf
     c. 2019年12月，图神经网络的ImageNet？斯坦福大学等开源百万量级OGB基准测试数据集。https://mp.weixin.qq.com/s/fCoQv6zMQw_8eOwANS16OQ
-        i. 项目地址：http://ogb.stanford.edu
-        ii. 图表示学习演讲合集：https://slideslive.com/38921872/graph-representation-learning-3
+    &emsp;&emsp;i. 项目地址：http://ogb.stanford.edu
+    &emsp;&emsp;ii. 图表示学习演讲合集：https://slideslive.com/38921872/graph-representation-learning-3
     d. 2019年2月，斯坦福31页PPT讲述图神经网络的强大：https://mp.weixin.qq.com/s/DUv5c6ce-dgLOBAE4ChiQg
 4. Google：
     a. 2021年7月，比9种SOTA GNN更强！谷歌大脑提出全新图神经网络GKATs。https://mp.weixin.qq.com/s/fuCtiOjBLGReg-WLs0cMRw
-        i. https://arxiv.org/pdf/2107.07999.pdf
-        ii. 谷歌大脑与牛津大学、哥伦比亚大学的研究人员提出了一种全新的GNN：GKATs。不仅解决了计算复杂度问题，还被证明优于9种SOTA GNN。
+    &emsp;&emsp;i. https://arxiv.org/pdf/2107.07999.pdf
+    &emsp;&emsp;ii. 谷歌大脑与牛津大学、哥伦比亚大学的研究人员提出了一种全新的GNN：GKATs。不仅解决了计算复杂度问题，还被证明优于9种SOTA GNN。
     b. 2019年5月，超越标准 GNN ！DeepMind、谷歌提出图匹配网络。https://mp.weixin.qq.com/s/rvcj9-6KlBsVmF_CAsip2A
-        i. https://arxiv.org/pdf/1904.12787.pdf
-        ii. 针对图结构对象的检索与匹配这一具有挑战性的问题，做了两个关键的贡献：
-            1. 首先，作者演示了如何训练图神经网络(GNN)在向量空间中生成图嵌入，从而实现高效的相似性推理。
-            2. 其次，作者提出了一种新的图匹配网络(Graph Matching Network)模型，给出一对图形作为输入，通过一种新的基于注意力的跨图匹配机制(cross-graph attention-based matching mechanism)，对图对进行联合推理，计算出一对图之间的相似度评分。
+    &emsp;&emsp;i. https://arxiv.org/pdf/1904.12787.pdf
+    &emsp;&emsp;ii. 针对图结构对象的检索与匹配这一具有挑战性的问题，做了两个关键的贡献：
+    &emsp;&emsp;&emsp;&emsp;1. 首先，作者演示了如何训练图神经网络(GNN)在向量空间中生成图嵌入，从而实现高效的相似性推理。
+    &emsp;&emsp;&emsp;&emsp;2. 其次，作者提出了一种新的图匹配网络(Graph Matching Network)模型，给出一对图形作为输入，通过一种新的基于注意力的跨图匹配机制(cross-graph attention-based matching mechanism)，对图对进行联合推理，计算出一对图之间的相似度评分。
     c. Google：DeepMind联合谷歌大脑、MIT等机构27位作者发表重磅论文，提出“图网络”（Graph network），将端到端学习与归纳推理相结合，有望解决深度学习无法进行关系推理的问题。http://baijiahao.baidu.com/s?id=1603225190297711463&wfr=spider&for=pc
-        i. https://arxiv.org/pdf/1806.01261.pdf
+    &emsp;&emsp;i. https://arxiv.org/pdf/1806.01261.pdf
 5. 东京工业大学：重新思考图卷积网络：GNN只是一种滤波器。
     a. https://mp.weixin.qq.com/s/SSDEoN6sxhd_VkA2mMF5cg，论文地址：https://arxiv.org/pdf/1905.09550.pdf
     b. 近年来，基于GCN的神经网络在点云分析、弱监督学习等领域得到了广泛的应用。随着输入特征空间的复杂化，我们提议重新审视当前基于GCN的GNNs设计。在计算机视觉中，GCN层并不是卷积层，我们需要把它看作一种去噪机制。因此，简单地叠加GCN层只会给神经网络设计带来过拟合和复杂性。
@@ -125,75 +124,75 @@ AI的学习基础资料相关，方便后续学习查阅。
     a. 2020年12月，开源！一文了解阿里一站式图计算平台GraphScope。https://mp.weixin.qq.com/s/JvLQI0asXhjEfUJ4ls6fMg
 8. 清华：
     a. 清华大学：2020年12月，清华大学发布首个自动图机器学习工具包AutoGL，开源易用可扩展，支持自定义模型。https://mp.weixin.qq.com/s/Khk7M_lamzbQdYvnuAzSzw
-        i. AutoGL 网站地址：http://mn.cs.tsinghua.edu.cn/autogl/
-        ii. 图深度学习模型综述：https://arxiv.org/abs/1812.04202
-        iii. AutoGL 说明文档：https://autogl.readthedocs.io/en/latest/index.html
-        iv. AutoGL 代码链接：https://github.com/THUMNLab/AutoGL
+    &emsp;&emsp;i. AutoGL 网站地址：http://mn.cs.tsinghua.edu.cn/autogl/
+    &emsp;&emsp;ii. 图深度学习模型综述：https://arxiv.org/abs/1812.04202
+    &emsp;&emsp;iii. AutoGL 说明文档：https://autogl.readthedocs.io/en/latest/index.html
+    &emsp;&emsp;iv. AutoGL 代码链接：https://github.com/THUMNLab/AutoGL
     b. 2018年12月，清华大学图神经网络综述：模型与应用。http://www.sohu.com/a/284616353_129720
-        i. https://github.com/thunlp/GNNPapers
+    &emsp;&emsp;i. https://github.com/thunlp/GNNPapers
 9. 华中科技大学：
     a. 2021年8月，中国首次！2021年图计算挑战赛揭榜，华中科技大团队夺冠。https://mp.weixin.qq.com/s/JIDzUFT2iumg6xiUOevW7A
-        i. 2021年图计算挑战赛GraphChallenge
-        ii. https://graphchallenge.mit.edu/champions
-        iii. 项目地址：https://github.com/CGCL-codes/Graphchallenge21
+    &emsp;&emsp;i. 2021年图计算挑战赛GraphChallenge
+    &emsp;&emsp;ii. https://graphchallenge.mit.edu/champions
+    &emsp;&emsp;iii. 项目地址：https://github.com/CGCL-codes/Graphchallenge21
 10. 中央财经：
     a. 2021年1月，GCN研究新进展BASGCN：填补传统CNN和空域GCN理论空白，荣登AI顶刊。https://mp.weixin.qq.com/s/TyLdRDqNUiHxnwf9S5Ynmw
-        i. 针对图分类的低回溯对齐空域图卷积网络，该算法可将任意大小的图转换为固定大小的低回溯对齐网格结构，并定义了一个与网格结构关联的新空域图卷积操作
+    &emsp;&emsp;i. 针对图分类的低回溯对齐空域图卷积网络，该算法可将任意大小的图转换为固定大小的低回溯对齐网格结构，并定义了一个与网格结构关联的新空域图卷积操作
 11. 剑桥大学：
     a. 2020年6月，147页详述「结构在神经网络中的复兴」，图注意力网络一作博士论文公开。https://mp.weixin.qq.com/s/evNCdyG6K5wIeHblfnrcpA
-        i. 论文链接：https://www.repository.cam.ac.uk/handle/1810/292230
-        ii. 图神经网络最初由 Franco Scarselli 和 Marco Gori 等人提出，在之后的十几年里被不断扩展，先后发展出了图卷积网络（Graph Convolution Networks，GCN）、 图注意力网络（Graph Attention Networks）、图自编码器（ Graph Autoencoders）、图生成网络（ Graph Generative Networks） 和图时空网络（Graph Spatial-temporal Networks）等多个子领域。
+    &emsp;&emsp;i. 论文链接：https://www.repository.cam.ac.uk/handle/1810/292230
+    &emsp;&emsp;ii. 图神经网络最初由 Franco Scarselli 和 Marco Gori 等人提出，在之后的十几年里被不断扩展，先后发展出了图卷积网络（Graph Convolution Networks，GCN）、 图注意力网络（Graph Attention Networks）、图自编码器（ Graph Autoencoders）、图生成网络（ Graph Generative Networks） 和图时空网络（Graph Spatial-temporal Networks）等多个子领域。
 12. 纽约大学、纽约大学、AWS：
     a. 2018年12月，如何设计「既快又好」的深度神经网络？也许更加动态和稀疏的模型会是答案所在。可见，不论是数据还是模型，「图」应该成为一个核心概念。由纽约大学、纽约大学上海分校、AWS 上海研究院以及 AWS MXNet Science Team 共同开发了 Deep Graph Library（DGL），一款面向图神经网络以及图机器学习的全新框架。
-        i. 在设计上，DGL 秉承三项原则：（1）DGL 必须和目前的主流的深度学习框架（PyTorch、MXNet、TensorFlow 等）无缝衔接。从而实现从传统的 tensor 运算到图运算的自由转换。（2）DGL 应该提供最少的 API 以降低用户的学习门槛。（3）在保证以上两点的基础之上，DGL 能高效并透明地并行图上的计算，以及能很方便地扩展到巨图上。DGL 现已开源。
-        ii. 主页地址：http://dgl.ai
+    &emsp;&emsp;i. 在设计上，DGL 秉承三项原则：（1）DGL 必须和目前的主流的深度学习框架（PyTorch、MXNet、TensorFlow 等）无缝衔接。从而实现从传统的 tensor 运算到图运算的自由转换。（2）DGL 应该提供最少的 API 以降低用户的学习门槛。（3）在保证以上两点的基础之上，DGL 能高效并透明地并行图上的计算，以及能很方便地扩展到巨图上。DGL 现已开源。
+    &emsp;&emsp;ii. 主页地址：http://dgl.ai
 13. 综合及其他：
     a. 2021年9月，支持异构图、集成GraphGym，超好用的图神经网络库PyG更新2.0版本。https://mp.weixin.qq.com/s/DFLbmVB2I824jXrSk8VhzQ
-        i. http://www.pyg.org/
+    &emsp;&emsp;i. http://www.pyg.org/
     b. 2021年8月，最新《图神经网络》综述论文，35页209篇文献详尽阐述GNN。https://mp.weixin.qq.com/s/W5JGRRS7nIBWsJ5L40iJ3A
-        i. https://www.zhuanzhi.ai/paper/4014c909fcaa7d7c7c7d292b6a7febbb
+    &emsp;&emsp;i. https://www.zhuanzhi.ai/paper/4014c909fcaa7d7c7c7d292b6a7febbb
     c. 2021年6月，319篇文献、41页综述文章讲述图神经网络用于医疗诊断的前世今生与未来。https://mp.weixin.qq.com/s/rn9p1pg92Ldik2ocBv9bLA
-        i. https://arxiv.org/abs/2105.13137
+    &emsp;&emsp;i. https://arxiv.org/abs/2105.13137
     d. 2021年6月，华人博士发127页万字长文：自然语言处理中图神经网络从入门到精通。https://mp.weixin.qq.com/s/pouqWGvO1CopljlqYBfONA
-        i. 论文：https://arxiv.org/pdf/2106.06090.pdf
-        ii. Github：https://github.com/graph4ai/graph4nlp/
+    &emsp;&emsp;i. 论文：https://arxiv.org/pdf/2106.06090.pdf
+    &emsp;&emsp;ii. Github：https://github.com/graph4ai/graph4nlp/
     e. 2021年3月，70分钟了解图神经网络，图注意力网络一作带来最「自然」的GNN讲解。https://mp.weixin.qq.com/s/DO5i95HsAmfhgoXzjbRIeg
     f. 2021年2月，关于“图机器学习算法”你应该知道的4个知识点。https://mp.weixin.qq.com/s/GGqVIxgYwBajuyZPxAUI8g
     g. 2021年1月，步入2021，大热的GNN会在哪些应用领域大展拳脚呢？https://mp.weixin.qq.com/s/E5nzgWdiMvixmxlaenyy_Q
-        i. https://medium.com/criteo-engineering/top-applications-of-graph-neural-networks-2021-c06ec82bfc18
+    &emsp;&emsp;i. https://medium.com/criteo-engineering/top-applications-of-graph-neural-networks-2021-c06ec82bfc18
     h. 2021年1月，图机器学习有多大神力？一文带你回顾2020，展望2021。https://mp.weixin.qq.com/s/Po-6wKm32Zcc2erauptIag
     i. 2021年1月，2021年的第一盆冷水：有人说别太把图神经网络当回事儿。https://mp.weixin.qq.com/s/_QeIUiEkBpJcN56506Zrzw
-        i. 博客链接：https://www.singlelunch.com/2020/12/28/why-im-lukewarm-on-graph-neural-networks/
-        ii. https://www.reddit.com/r/MachineLearning/comments/kqazpd/d_why_im_lukewarm_on_graph_neural_networks/
+    &emsp;&emsp;i. 博客链接：https://www.singlelunch.com/2020/12/28/why-im-lukewarm-on-graph-neural-networks/
+    &emsp;&emsp;ii. https://www.reddit.com/r/MachineLearning/comments/kqazpd/d_why_im_lukewarm_on_graph_neural_networks/
     j. 2020年9月，腾讯AI Lab联合清华，港中文长文解析图深度学习的历史、最新进展到应用。https://mp.weixin.qq.com/s/IlgvzuAFaJs2SxU42AFkyQ
     k. 2020年5月，神经网络大比拼。https://mp.weixin.qq.com/s/erVvd1DJNQRbr9WTitcn4g
-        i. <img src="/images/nutraul_diff.png"></img>
+    &emsp;&emsp;i. <img src="/images/nutrual_diff.png" width="400"></img>
     l. 2020年4月，图神经网络的新基准。https://mp.weixin.qq.com/s/v9aOoK2sHP0a9hZP0jWW0Q
-        i. 论文链接：https://arxiv.org/pdf/2003.00982.pdf
-        ii. 开源链接：https://github.com/graphdeeplearning/benchmarking-gnns
+    &emsp;&emsp;i. 论文链接：https://arxiv.org/pdf/2003.00982.pdf
+    &emsp;&emsp;ii. 开源链接：https://github.com/graphdeeplearning/benchmarking-gnns
     m. 2020年3月，Bengio参与、LeCun点赞：图神经网络权威基准现已开源。https://mp.weixin.qq.com/s/ldkYTvess0Wte5HzKbMBfQ
-        i. 在斯坦福图神经网络大牛 Jure 等人发布《Open Graph Benchmark》之后，又一个旨在构建「图神经网络的 ImageNet」的研究出现了。
-        ii. 论文链接：https://arxiv.org/abs/2003.00982
-        iii. 项目地址：https://github.com/graphdeeplearning/benchmarking-gnns
+    &emsp;&emsp;i. 在斯坦福图神经网络大牛 Jure 等人发布《Open Graph Benchmark》之后，又一个旨在构建「图神经网络的 ImageNet」的研究出现了。
+    &emsp;&emsp;ii. 论文链接：https://arxiv.org/abs/2003.00982
+    &emsp;&emsp;iii. 项目地址：https://github.com/graphdeeplearning/benchmarking-gnns
     n. 2020年2月，2020年，图机器学习将走向何方？https://mp.weixin.qq.com/s/YC2gvjbSBs2qOgix6wVhuQ
-        i. https://towardsdatascience.com/top-trends-of-graph-machine-learning-in-2020-1194175351a3
+    &emsp;&emsp;i. https://towardsdatascience.com/top-trends-of-graph-machine-learning-in-2020-1194175351a3
     o. 2020年2月，火爆的图机器学习，2020年将有哪些研究趋势？https://mp.weixin.qq.com/s?__biz=MzA5ODEzMjIyMA==&mid=2247495721&amp;idx=1&amp;sn=33fd16c66c64cd5bb621f12e256425ac&source=41#wechat_redirect
     p. 2020年1月，图神经网络（Graph Neural Networks，GNN）综述。https://mp.weixin.qq.com/s/G5D7COE-3qEnd0qnVPsOWg
-        i. https://arxiv.org/abs/1901.00596
+    &emsp;&emsp;i. https://arxiv.org/abs/1901.00596
     q. 2019年12月，17篇论文，详解图的机器学习趋势。https://mp.weixin.qq.com/s/1ecou3cqTRGkBDeV9A3AUQ
     r. 2019年10月，开源图神经网络框架DGL升级：GCMC训练时间从1天缩到1小时，RGCN实现速度提升291倍。https://mp.weixin.qq.com/s/LevrZzAKxYP1IQ67zbLEmQ
-        i. DGL异构图教程：https://docs.dgl.ai/tutorials/hetero/1_basics.html
-        ii. DGL v0.4 更新笔记：https://github.com/dmlc/dgl/releases
-        iii. DGL-KE代码及使用说明：https://github.com/dmlc/dgl/tree/master/apps/kg
-        iv. DGL-Chem 模型库:https://docs.dgl.ai/api/python/model_zoo.html#chemistry
+    &emsp;&emsp;i. DGL异构图教程：https://docs.dgl.ai/tutorials/hetero/1_basics.html
+    &emsp;&emsp;ii. DGL v0.4 更新笔记：https://github.com/dmlc/dgl/releases
+    &emsp;&emsp;iii. DGL-KE代码及使用说明：https://github.com/dmlc/dgl/tree/master/apps/kg
+    &emsp;&emsp;iv. DGL-Chem 模型库:https://docs.dgl.ai/api/python/model_zoo.html#chemistry
     s. 2019年1月，图神经网络（GNN）热度持续上升，之前我们曾介绍了清华两篇综述论文（如下1、2）。最近，IEEE Fellow、Senior Member 和 Member Zonghan Wu 等人又贡献了一篇图神经网络综述文章。这篇文章介绍了 GNN 的背景知识、发展历史、分类与框架、应用等，详细介绍了各种模型与方法，包括公式、模型图示、算法等。
-        i. 其他
-            1. 清华大学孙茂松组在 arXiv 上发布预印版综述文章 《Graph Neural Networks: A Review of Methods and Applications》，链接：https://arxiv.org/pdf/1812.08434
-            2. 该领域的参考文章 https://github.com/thunlp/GNNPapers
-            3. 清华大学朱文武等人综述了应用于图的不同深度学习方法：《Deep Learning on Graphs: A Survey》，链接：https://arxiv.org/abs/1812.04202
-        ii. 论文：A Comprehensive Survey on Graph Neural Networks，链接：https://arxiv.org/pdf/1901.00596v1.pdf
+    &emsp;&emsp;i. 其他
+    &emsp;&emsp;&emsp;&emsp;1. 清华大学孙茂松组在 arXiv 上发布预印版综述文章 《Graph Neural Networks: A Review of Methods and Applications》，链接：https://arxiv.org/pdf/1812.08434
+    &emsp;&emsp;&emsp;&emsp;2. 该领域的参考文章 https://github.com/thunlp/GNNPapers
+    &emsp;&emsp;&emsp;&emsp;3. 清华大学朱文武等人综述了应用于图的不同深度学习方法：《Deep Learning on Graphs: A Survey》，链接：https://arxiv.org/abs/1812.04202
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;ii. 论文：A Comprehensive Survey on Graph Neural Networks，链接：https://arxiv.org/pdf/1901.00596v1.pdf
     t. 2018年12月，深度学习在多个领域中实现成功，如声学、图像和自然语言处理。但是，将深度学习应用于普遍存在的图数据仍然存在问题，这是由于图数据的独特特性。近期，该领域出现大量研究，极大地提升了图分析技术。清华大学朱文武等人综述了应用于图的不同深度学习方法。他们将现有方法分为三个大类：半监督方法，包括图神经网络和图卷积网络；无监督方法，包括图自编码器；近期新的研究方法，包括图循环神经网络和图强化学习。然后按照这些方法的发展史对它们进行系统概述。该研究还分析了这些方法的区别，以及如何合成不同的架构。最后，该研究简单列举了这些方法的应用范围，并讨论了潜在方向。
-        i. 论文：《Deep Learning on Graphs: A Survey》，https://arxiv.org/abs/1812.04202
+    &emsp;&emsp;i. 论文：《Deep Learning on Graphs: A Survey》，https://arxiv.org/abs/1812.04202
     u. 2018年10月，GNN（图神经网络）代表了一种新兴的计算模型，这自然地产生了对在大型graph上应用神经网络模型的需求。但是，由于GNN固有的复杂性，这些模型超出了现有深度学习框架的设计范围。此外，这些模型不容易在并行硬件（如GPU）上有效地加速。北京大学、微软亚洲研究院的研究人员近日发表论文，提出NGra，NGra是第一个支持GNN的并行处理框架（第一个支持大规模GNN的系统），它使用新的编程抽象，然后将其映射和优化为数据流，进而在GPU上高效执行。论文地址：https://arxiv.org/pdf/1810.08403.pdf，中文参考：https://mp.weixin.qq.com/s/5DmpgPN4t3p3H53Xu7_-3A
     
 ### 多项式回归
@@ -206,22 +205,22 @@ AI的学习基础资料相关，方便后续学习查阅。
 
 1. 综述及其他：
     a. 2020年5月，178页，四年图神经网络研究精华，图卷积网络作者Thomas Kipf博士论文公布。https://mp.weixin.qq.com/s/h26uPmzQbVQgkwFEmAwgWA
-        i. 论文链接：https://pure.uva.nl/ws/files/46900201/Thesis.pdf
+    &emsp;&emsp;i. 论文链接：https://pure.uva.nl/ws/files/46900201/Thesis.pdf
     b. 2019年8月，图解十大 CNN 架构。https://mp.weixin.qq.com/s/_e6H7IDrdbmdmOBjgIHApQ
-        i. https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d
+    &emsp;&emsp;i. https://towardsdatascience.com/illustrated-10-cnn-architectures-95d78ace614d
     c. 2019年6月，CNN网络结构的发展：从LeNet到EfficientNet。https://mp.weixin.qq.com/s/ooK2aAC_TAPFmK9dPLF-Fw
-        i. https://zhuanlan.zhihu.com/p/68411179
+    &emsp;&emsp;i. https://zhuanlan.zhihu.com/p/68411179
     d. 深度卷积神经网络演化历史及结构改进脉络-40页长文全面解读。https://mp.weixin.qq.com/s/28GtBOuAZkHs7JLRVLlSyg
-        i. https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215
+    &emsp;&emsp;i. https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215
     e. 一文看懂卷积神经网络：https://mp.weixin.qq.com/s/4t3GrHkbPoi1fLF-J4t_fw，https://towardsdatascience.com/a-deeper-understanding-of-nnets-part-1-cnns-263a6e3ac61
-        i. 一文带你掌握4种卷积方法。https://mp.weixin.qq.com/s/y2L8C9b2RUssdJfBVJO3mA
+    &emsp;&emsp;i. 一文带你掌握4种卷积方法。https://mp.weixin.qq.com/s/y2L8C9b2RUssdJfBVJO3mA
     f. 万字长文带你看尽深度学习中的各种卷积网络。https://mp.weixin.qq.com/s/IQoh6fO_oWvetnnWAuzSeQ
     g. 7大类深度CNN架构创新综述。https://mp.weixin.qq.com/s/Fhge-Idk_adBjUuzaAtzyQ
 2. Point-Voxel CNN：http://pvcnn.mit.edu
     a. MIT：
-        i. 2019年12月，内存计算显著降低，平均7倍实测加速，MIT提出高效、硬件友好的三维深度学习方法。https://mp.weixin.qq.com/s/kz5ja8K4rPD_m1GvUznByg
-            1. 随着三维深度学习越来越成为近期研究的热点，基于栅格化的数据处理方法也越来越受欢迎。但这种处理方法往往受限于高分辨下巨大的内存和计算开销，麻省理工学院 HAN Lab 的研究者提出利用 Point-Voxel CNN 来实现高效的三维深度学习，同时能够避免巨大的数据访问开销并很好地提升了局部性。
-            2. https://arxiv.org/pdf/1907.03739.pdf 
+    &emsp;&emsp;i. 2019年12月，内存计算显著降低，平均7倍实测加速，MIT提出高效、硬件友好的三维深度学习方法。https://mp.weixin.qq.com/s/kz5ja8K4rPD_m1GvUznByg
+    &emsp;&emsp;&emsp;&emsp;1. 随着三维深度学习越来越成为近期研究的热点，基于栅格化的数据处理方法也越来越受欢迎。但这种处理方法往往受限于高分辨下巨大的内存和计算开销，麻省理工学院 HAN Lab 的研究者提出利用 Point-Voxel CNN 来实现高效的三维深度学习，同时能够避免巨大的数据访问开销并很好地提升了局部性。
+    &emsp;&emsp;&emsp;&emsp;2. https://arxiv.org/pdf/1907.03739.pdf 
 
 3. 2021年6月，清华&旷视让全连接层“内卷”，卷出MLP性能新高度。https://mp.weixin.qq.com/s/xH8rniuWcYE6UFkiicMCcQ
     a. 论文地址：https://arxiv.org/abs/2105.01883 
@@ -285,10 +284,10 @@ TCN 的特征是：
 1. 2020年1月，只有加法也能做深度学习，北大、华为等提出AdderNet，性能不输传统CNN。https://mp.weixin.qq.com/s/mL7EMzT7c9mTvqyyr3yLPg
     a. https://arxiv.org/abs/1511.00363
     b. 如何让避免CNN中的乘法呢？研究人员使用L1了距离。L1距离是两点坐标差值的绝对值之和，不涉及乘（下图的蓝色折线）
-        i. <img src="/images/addernet.png"></img>
+    &emsp;&emsp;i. <img src="/images/addernet.png" width="400"></img>
     c. 相关思想文章：
-        i. 2020年1月，华为深度学习新模型DeepShift：移位和求反代替乘法，神经网络成本大降。https://mp.weixin.qq.com/s/K_b4Kl7AG4xecTx8p3YJTg
-           1. https://arxiv.org/pdf/1905.13298.pdf
+    &emsp;&emsp;i. 2020年1月，华为深度学习新模型DeepShift：移位和求反代替乘法，神经网络成本大降。https://mp.weixin.qq.com/s/K_b4Kl7AG4xecTx8p3YJTg
+    &emsp;&emsp;&emsp;&emsp;1. https://arxiv.org/pdf/1905.13298.pdf
 
 ### 向量网络（VectorNet）
 
@@ -300,8 +299,8 @@ TCN 的特征是：
 
 1. 概念：
     a. Transformer由论文《Attention is All You Need》提出，Attention is All You Need：https://arxiv.org/abs/1706.03762
-        i. Transformer 整体结构宏观上看是一个Encoder-Decoder结构，只不过这个结构完全抛弃了常见的RNN、LSTM等结构。
-        ii. 更多介绍和说明：https://jalammar.github.io/illustrated-transformer/
+    &emsp;&emsp;i. Transformer 整体结构宏观上看是一个Encoder-Decoder结构，只不过这个结构完全抛弃了常见的RNN、LSTM等结构。
+    &emsp;&emsp;ii. 更多介绍和说明：https://jalammar.github.io/illustrated-transformer/
 2. 2021年9月，Transformer又出新变体∞-former：无限长期记忆，任意长度上下文。https://mp.weixin.qq.com/s/xlIy5Zsy9UWIO8SqBVT5CA
     a. https://arxiv.org/pdf/2109.00301.pdf
     b. 来自 DeepMind 等机构的研究者提出了一种名为 ∞-former 的模型，它是一种具备无限长期记忆（LTM）的 Transformer 模型，可以处理任意长度的上下文。
@@ -384,7 +383,7 @@ TCN 的特征是：
 6. 2020年10月，人脑与卷积神经网络的诡异对应，识别三维图形反应模式非常相似。https://mp.weixin.qq.com/s/0-ek5Tagp-0adMPi8fcRxA
 7. 2020年10月，清华首次提出「类脑计算完备性」及计算系统层次结构，登上Nature。https://mp.weixin.qq.com/s/desOYisVuPdl4xgxy6v-5Q
     a. 「类脑计算完备性」（neuromorphic completenes）
-    b. <img src="/images/neuromorphic.png"></img>
+    b. <img src="/images/neuromorphic.png" width="400"></img>
 8. 2020年9月，浙大重磅发布亿级神经元类脑计算机：基于 792 颗自研「达尔文 2 代」芯片，可“意念”打字。https://mp.weixin.qq.com/s/FRGrt9qKm5e4iuzwTjTieQ
     a. https://mp.weixin.qq.com/s/LQa3j33iT76YCFuYGhZSAA
     b. http://ac.zju.edu.cn/2019/0827/c16466a1582995/page.htm
@@ -400,7 +399,7 @@ TCN 的特征是：
 14. 2020年5月，让芯片像“人”一样思考！IBM创新芯片架构，提升分类网络准确率至93.75%。https://mp.weixin.qq.com/s/g_MfrKhgn8oJrJJvr39qoA
     a. https://www.nature.com/articles/s41467-020-16108-9
 15. 2020年4月，深扒全球仿生芯片计划！15+公司已入局，人造大脑通往未来计算之门。https://mp.weixin.qq.com/s/VW21Q7IZOiSX9lCmw2jEFA
-    a. <img src="/images/chip_diff.png"></img>
+    a. <img src="/images/chip_diff.png" width="400"></img>
 16. 2020年4月，芯片造脑：华人博士一作Nature两连发，神经拟态计算竟像人脑一样「低能耗」。https://mp.weixin.qq.com/s/fEPDn_51YL2i41VJTbYZjg
     a. https://www.nature.com/articles/s41467-020-15759-y
 17. 2020年3月，1亿神经元，秒杀深度学习千倍！英特尔发布最强神经拟态计算系统。https://mp.weixin.qq.com/s/7ezMngxhdEMSm6Us15cEvw
@@ -426,11 +425,11 @@ TCN 的特征是：
     a. https://sukanyabag.medium.com/activation-functions-all-you-need-to-know-355a850d025e
 4. 谷歌：
     a. 2021年5月，更宽还是更深？Google AI：广度网络和深度网络能学到同样的东西吗？https://mp.weixin.qq.com/s/XO49wBa1_kZuhP3VLaf08Q
-        i. https://ai.googleblog.com/2021/05/do-wide-and-deep-networks-learn-same.html
+    &emsp;&emsp;i. https://ai.googleblog.com/2021/05/do-wide-and-deep-networks-learn-same.html
   b. 2020年8月，谷歌用算力爆了一篇论文，解答有关无限宽度网络的一切。https://mp.weixin.qq.com/s/OA-HGJLj90qIBcUvEWZbPw
-        i. 论文链接：https://arxiv.org/pdf/2007.15801v1.pdf
+    &emsp;&emsp;i. 论文链接：https://arxiv.org/pdf/2007.15801v1.pdf
   c. 2020年7月，73岁Hinton老爷子构思下一代神经网络：属于无监督对比学习。https://mp.weixin.qq.com/s/FU_UMnt_69rjK-AUgoh6Hg
   d. 2019年3月，谷歌、DeepMind和OpenAI都在用的Transformer是如何工作的？https://mp.weixin.qq.com/s/yjPQyTevsHRlQudTbrk8Ig
 5. 2018年9月，深度学习模型哪个最像人脑？由MIT、NYU、斯坦福等众多著名大学研究人员组成的团队，便提出了brain-score系统，对当今主流的人工神经网络（ANN）进行评分排名。https://mp.weixin.qq.com/s/cBJ_5Ctvn17og6MWN2T4lg
-    a. <img src="/images/nutural_model_diff.png"></img>
+    a. <img src="/images/nutural_model_diff.png" width="400"></img>
     b. https://www.biorxiv.org/content/early/2018/09/05/407007
